@@ -36,17 +36,13 @@ export default createBoard({
                 <h2 className={StyleGuide_board_module.subSectionTitle}>Main Heading / h1</h2>
                 <div className={StyleGuide_board_module.grid}>
                     <div>
-                        <h1 className={Classnames('h1Bold', StyleGuide_board_module.margin)}>
-                            Heading 42
-                        </h1>
+                        <h1 className="h1Bold">Heading 42</h1>
                         <div className={StyleGuide_board_module.subtitleValue}>
                             h1Bold <br /> DM Sans, 700
                         </div>
                     </div>
                     <div>
-                        <h1 className={Classnames('h1Normal', StyleGuide_board_module.margin)}>
-                            Heading 42
-                        </h1>
+                        <h1 className="h1Normal">Heading 42</h1>
                         <div className={StyleGuide_board_module.subtitleValue}>
                             h1Normal <br /> DM Sans, 400
                         </div>
