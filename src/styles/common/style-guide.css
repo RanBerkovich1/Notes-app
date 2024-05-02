@@ -70,23 +70,40 @@
   font: var(--smallBold);
 }
 
-.b10 {
-  background-color: var(--b10);
+.sand1 {
+  background-color: var(--sand1);
 }
 
-.b20 {
-  background-color: var(--b20);
+.sand2 {
+  background-color: var(--sand2);
 }
 
-.b30 {
-  background-color: var(--b30);
-}
-.b40 {
-  background-color: var(--b40);
+.sand3 {
+  background-color: var(--sand3);
 }
 
-.d10 {
-  background: var(--d10);
+.grass1 {
+  background: var(--grass1);
+}
+
+.grass2 {
+  background: var(--grass2);
+}
+
+.grass3 {
+  background: var(--grass3);
+}
+
+.grass4 {
+  background: var(--grass4);
+}
+
+.grass5 {
+  background: var(--grass5);
+}
+
+.grassdark {
+  background: var(--grassdark);
 }
 .d12 {
   background-color: var(--d20);

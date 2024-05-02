@@ -18,36 +18,17 @@
   --smallLight: normal 300 11px / normal DM Sans, sans-serif;
   --smallBold: normal 700 11px / normal DM Sans, sans-serif;
 
-  --b10: #f0f5ff;
-  --b20: #2f6fed;
-  --b30: #1d5bd6;
-  --b40: #1e4eae;
+  --sand1: #FDFDFC;
+  --sand2: #EBEBE9;
+  --sand3: #BCBBB5;
 
-  --d10: #e0e0e8;
-  --d20: #afafb6;
-  --d30: #808087;
-  --d40: #54545a;
-  --d50: #2b2b31;
+  --grass1: #FBFEFB;
+  --grass2: #EBF9EB;
+  --grass3: #B7DFBA;
+  --grass4: #46A758;
+  --grass5: #18794E;
+  --grassdark: #131D16;
 
-  --w10: #fef4e9;
-  --w20: #fcd0a0;
-  --w30: #fabf7a;
-  --w40: #f7a446;
-  --w50: #aa661e;
-
-  --e10: #feecec;
-  --e20: #fab2af;
-  --e30: #f26561;
-  --e40: #ec6d69;
-  --e50: #a5302c;
-  --e60: #932927;
-
-  --s10: #e8f8f1;
-  --s20: #9fe1c2;
-  --s30: #76d6ab;
-  --s40: #76d6ab;
-  --s50: #0f804e;
-  --s60: #932927;
 
   --size2: 2px;
   --size4: 4px;
