@@ -2,21 +2,15 @@
 
 
 :root {
-  --h1Normal: normal 400 42px / normal DM Sans, sans-serif;
-  --h1Light: normal 300 42px / normal DM Sans, sans-serif;
-  --h1Bold: normal 700 42px / normal DM Sans, sans-serif;
+  --sectionTitle: normal 700 16px / normal DM Sans, sans-serif;
+  --cardTitle: normal 700 16px / normal DM Sans, sans-serif;
+  --cardText: normal 400 12px / normal DM Sans, sans-serif;
 
-  --h2Normal: normal 400 28px / normal DM Sans, sans-serif;
-  --h2Light: normal 300 28px / normal DM Sans, sans-serif;
-  --h2Bold: normal 700 28px / normal DM Sans, sans-serif;
+  --noteTitle: normal 700 20px / normal DM Sans, sans-serif;
+  --noteText: normal 400 16px / normal DM Sans, sans-serif;
+  --navigation: normal 400 14px / normal DM Sans, sans-serif;
 
-  --pNormal: normal 400 12px / normal DM Sans, sans-serif;
-  --pLight: normal 300 12px / normal DM Sans, sans-serif;
-  --pBold: normal 700 12px / normal DM Sans, sans-serif;
 
-  --smallNormal: normal 400 11px / normal DM Sans, sans-serif;
-  --smallLight: normal 300 11px / normal DM Sans, sans-serif;
-  --smallBold: normal 700 11px / normal DM Sans, sans-serif;
 
   --sand1: #FDFDFC;
   --sand2: #EBEBE9;

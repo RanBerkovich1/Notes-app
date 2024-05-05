@@ -1,85 +1,38 @@
 @import './variables.css';
 
-.checkVar {
-  background-color: var(--dana-var);
+.sectionTitle {
+  font: var(--sectionTitle);
 }
 
-.h1Normal {
-  font: var(--h1Normal);
+.cardTitle {
+  font: var(--cardTitle);
 }
 
-.h1Light {
-  font: var(--h1Light);
-}
-.h1Bold {
-  font: var(--h1Bold);
-  background-color: #8e5353;
-  background-image: linear-gradient(#8e5555, #8e5555);
-  background-position: 0%;
-  background-size: auto;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  background-origin: padding-box;
-  background-clip: border-box;
-  background-image: linear-gradient(#ad8787, #ad8787);
-  background-position: 0%;
-  background-size: auto;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  background-origin: padding-box;
-  background-clip: border-box;
-  background-image: linear-gradient(#faf5f5, #faf5f5);
-  background-position: 0%;
-  background-size: auto;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  background-origin: padding-box;
-  background-clip: border-box;
+.cardText {
+  font: var(--cardText);
 }
 
-.h2Normal {
-  font: var(--h2Normal);
+.noteTitle {
+  font: var(--noteTitle);
 }
 
-.h2Light {
-  font: var(--h2Light);
+.noteText {
+  font: var(--noteText);
 }
-.h2Bold {
+.navigation {
   font: var(--h2Bold);
 }
 
-.pNormal {
-  font: var(--pNormal);
-}
-
-.pLight {
-  font: var(--pLight);
-}
-.pBold {
-  font: var(--pBold);
-}
-
-.smallNormal {
-  font: var(--smallNormal);
-}
-
-.smallLight {
-  font: var(--smallLight);
-}
-.smallBold {
-  font: var(--smallBold);
-}
-
 .sand1 {
-  background-color: var(--sand1);
+  background: var(--sand1);
 }
 
 .sand2 {
-  background-color: var(--sand2);
+  background: var(--sand2);
 }
 
 .sand3 {
-  background-color: var(--sand3);
+  background: var(--sand3);
 }
 
 .grass1 {
@@ -104,60 +57,6 @@
 
 .grassdark {
   background: var(--grassdark);
-}
-.d12 {
-  background-color: var(--d20);
-}
-.d30 {
-  background-color: var(--d30);
-}
-.d40 {
-  background-color: var(--d40);
-}
-.w10 {
-  background-color: var(--w10);
-}
-.w20 {
-  background-color: var(--w20);
-}
-.w30 {
-  background-color: var(--w30);
-}
-.w40 {
-  background-color: var(--w40);
-}
-.w50 {
-  background-color: var(--w50);
-}
-.e10 {
-  background-color: var(--e10);
-}
-.e20 {
-  background-color: var(--e20);
-}
-.e30 {
-  background-color: var(--e30);
-}
-.e40 {
-  background-color: var(--e40);
-}
-.e50 {
-  background-color: var(--e50);
-}
-.s10 {
-  background-color: var(--s10);
-}
-.s20 {
-  background-color: var(--s20);
-}
-.s30 {
-  background-color: var(--s30);
-}
-.s40 {
-  background-color: var(--s40);
-}
-.s50 {
-  background-color: var(--s50);
 }
 
 .shadow100 {

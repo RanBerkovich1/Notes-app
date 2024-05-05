@@ -29,7 +29,7 @@
     flex-direction: column;
     padding-right: 60px;
     padding-left: 60px;
-    background-color: #ebeef5;
+    background: #ebeef5;
     margin-top: 20px;
 }
 
@@ -39,16 +39,19 @@
     font-size: 23px;
     line-height: 0;
     column-gap: 12px;
+    margin: 0px;
+    padding: 0px;
 }
 .SectionSubtitle {
-    padding-left: 47px;
+    padding-left: 0px;
     color: #898989;
     font-size: 15px;
 }
 .subsectionContainer {
     padding-right: 60px;
     padding-left: 60px;
-    padding-bottom: 20px;
+    padding-bottom: 32px;
+    padding-top: 32px;
 }
 .subSectionTitle {
     font-size: 13px;
