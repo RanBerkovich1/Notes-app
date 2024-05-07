@@ -1,4 +1,4 @@
-import '../../styles/common/style-guide.css';
+import style from '../../styles/common/style-guide.module.scss';
 import { createBoard } from '@wixc3/react-board';
 
 export default createBoard({
@@ -6,7 +6,7 @@ export default createBoard({
     Board: () => (
         <div>
             <h1>Heading 1</h1>
-            <h1 className="sectionTitle">Section Title</h1>
+            <h1 className={style['sectionTitle']}>Section Title</h1>
         </div>
     ),
     isSnippet: true,
