@@ -1,16 +1,12 @@
 import classNames from 'classnames';
-import styles from './header.module.scss';
-import { Link, NavLink } from 'react-router-dom';
+import styles from './sidebar-panel.module.scss';
+import { NavLink } from 'react-router-dom';
 
 export interface HeaderProps {
     className?: string;
 }
 
-/**
- * This component was created using Codux's Default new component template.
- * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
- */
-export const Header = ({ className }: HeaderProps) => {
+export const SidebarPanel = ({ className }: HeaderProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <a href="/">Logo</a>
@@ -22,10 +18,10 @@ export const Header = ({ className }: HeaderProps) => {
                     Home
                 </NavLink>
                 <NavLink
-                    to="/about"
+                    to="/deleted"
                     className={({ isActive }) => classNames({ [styles.active]: isActive })}
                 >
-                    About
+                    Deleted
                 </NavLink>
             </div>
         </div>
