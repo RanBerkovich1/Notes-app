@@ -28,27 +28,27 @@ export default createBoard({
                         </div>
                     </div>
                     <div>
-                        <h1 className={style['h1Normal']}>CardTitle</h1>
+                        <h1>CardTitle</h1>
                         <div className={StyleGuide_board_module.subtitleValue}>
                             Bold 12px <br />
                         </div>
                     </div>
                     <div>
-                        <h1 className={style['h1Normal']}>CardText</h1>
+                        <h1>CardText</h1>
                         <div className={StyleGuide_board_module.subtitleValue}>
                             Regular 12px
                             <br />
                         </div>
                     </div>
                     <div>
-                        <h1 className={style['h1Normal']}>NoteTitle</h1>
+                        <h1>NoteTitle</h1>
                         <div className={StyleGuide_board_module.subtitleValue}>
                             Bold 20px
                             <br />
                         </div>
                     </div>
                     <div>
-                        <h1 className={style['h1Normal']}>
+                        <h1>
                             NoteText
                             <div className={StyleGuide_board_module.subtitleValue}>
                                 Regular 16px
@@ -57,7 +57,7 @@ export default createBoard({
                         </h1>
                     </div>
                     <div>
-                        <h1 className={style['h1Normal']}>Navigation</h1>
+                        <h1>Navigation</h1>
                         <div className={StyleGuide_board_module.subtitleValue}>
                             Regular 14px <br />
                         </div>
@@ -102,7 +102,10 @@ export default createBoard({
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'grass3')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                style['grass3']
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
                             grass3
@@ -111,7 +114,10 @@ export default createBoard({
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'grass4')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                style['grass4']
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
                             grass4
@@ -120,7 +126,10 @@ export default createBoard({
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'grass5')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                style['grass5']
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
                             grass5
@@ -182,7 +191,7 @@ export default createBoard({
             </div>
             <div className={StyleGuide_board_module.SectionContainer}>
                 <div className={StyleGuide_board_module.SectionTitle}>
-                    <h2 className="sectionTitle">Shadows</h2>
+                    <h2 className={style['sectionTitle']}>Shadows</h2>
                 </div>
                 <p className={StyleGuide_board_module.SectionSubtitle}>
                     Shadows help create the illusion of depth and dimension in a flat, 2D digital
