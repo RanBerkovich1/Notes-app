@@ -1,0 +1,145 @@
+@import './variables.module.scss';
+
+.sectionTitle {
+    font: $sectionTitle;
+}
+
+.cardTitle {
+    font: $cardTitle;
+}
+
+.cardText {
+    font: $cardText;
+}
+
+.noteTitle {
+    font: $noteTitle;
+}
+
+.noteText {
+    font: $noteText;
+}
+
+.sand1 {
+    background: $sand1;
+}
+
+.sand2 {
+    background: $sand2;
+}
+
+.sand3 {
+    background: $sand3;
+}
+
+.grass1 {
+    background: $grass1;
+}
+
+.grass2 {
+    background: $grass2;
+}
+
+.grass3 {
+    background: $grass3;
+}
+
+.grass4 {
+    background: $grass4;
+}
+
+.grass5 {
+    background: $grass5;
+}
+
+.grassdark {
+    background: $grassdark;
+}
+
+.shadow100 {
+    box-shadow:
+        0px 4px 12px -4px rgba(22, 34, 51, 0.12),
+        0px 16px 32px 0px rgba(22, 34, 51, 0.16);
+}
+
+.shadow200 {
+    box-shadow:
+        0px 4px 8px -4px rgba(22, 34, 51, 0.08),
+        0px 16px 24px 0px rgba(22, 34, 51, 0.08);
+}
+
+.shadow300 {
+    box-shadow: 0 3px 16px -4px rgba(22, 34, 51, 0.2);
+}
+
+.padding2 {
+    padding: $size2;
+}
+
+.padding4 {
+    padding: $size4;
+}
+
+.padding6 {
+    padding: $size6;
+}
+
+.padding8 {
+    padding: $size8;
+}
+
+.padding12 {
+    padding: $size12;
+}
+
+.padding16 {
+    padding: $size16;
+}
+
+.padding24 {
+    padding: $size24;
+}
+
+.padding32 {
+    padding: $size32;
+}
+
+.padding40 {
+    padding: $size40;
+}
+
+.margin2 {
+    margin: $size2;
+}
+
+.margin4 {
+    margin: $size4;
+}
+
+.margin6 {
+    margin: $size6;
+}
+
+.margin8 {
+    margin: $size8;
+}
+
+.margin12 {
+    margin: $size12;
+}
+
+.margin16 {
+    margin: $size16;
+}
+
+.margin24 {
+    margin: $size24;
+}
+
+.margin32 {
+    margin: $size32;
+}
+
+.margin40 {
+    margin: $size40;
+}
