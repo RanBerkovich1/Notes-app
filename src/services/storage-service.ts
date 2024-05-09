@@ -30,23 +30,26 @@ export class StorageService {
         return undefined;
     }
 
-    addNote(newNote: Omit<Note, 'id' | 'createdDate' | 'modifiedDate'>): void {
+    addNote(newNote: Omit<Note, 'id' | 'createdAt' | 'modifiedAt'>): Note {
         const id = Date.now().toString();
-        const createdDate = new Date();
-        const modifiedDate = createdDate;
-        const note: Note = { id, createdDate, modifiedDate, ...newNote };
+        const createdAt = new Date();
+        const modifiedAt = createdAt;
+        const note: Note = { id, createdAt, modifiedAt, ...newNote };
         localStorage.setItem(this.getKey(id), JSON.stringify(note));
+        return note;
     }
 
     editNote(
         id: string,
-        updatedNote: Partial<Omit<Note, 'id' | 'createdDate' | 'modifiedDate'>>
-    ): void {
+        updatedNote: Partial<Omit<Note, 'id' | 'createdAt' | 'modifiedAt'>>
+    ): Note | undefined {
         const existingNote = this.getNoteById(id);
         if (existingNote) {
-            const modifiedNote = { ...existingNote, ...updatedNote, modifiedDate: new Date() };
+            const modifiedNote = { ...existingNote, ...updatedNote, modifiedAt: new Date() };
             localStorage.setItem(this.getKey(id), JSON.stringify(modifiedNote));
+            return modifiedNote;
         }
+        return;
     }
 
     deleteNote(id: string, completely: boolean = false): void {
@@ -55,7 +58,7 @@ export class StorageService {
         } else {
             const existingNote = this.getNoteById(id);
             if (existingNote) {
-                existingNote.deletedDate = new Date();
+                existingNote.deletedAt = new Date();
                 localStorage.setItem(this.getKey(id), JSON.stringify(existingNote));
             }
         }

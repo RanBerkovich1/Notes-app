@@ -2,8 +2,8 @@ export interface Note {
     id: string;
     title: string;
     description: string;
-    createdDate: Date;
-    modifiedDate: Date;
-    deletedDate?: Date;
+    createdAt: Date;
+    modifiedAt: Date;
+    deletedAt?: Date;
     isPinned: boolean;
 }

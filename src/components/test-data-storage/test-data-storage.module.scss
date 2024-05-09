@@ -1,0 +1,39 @@
+@import '@styles/common/theme.module.scss';
+
+.root {
+    font-size: 12px;
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.notes span {
+    display: inline-block;
+    height: 20px;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.delBtn,
+.updateBtn {
+    cursor: pointer;
+    color: red;
+    padding: 0 3px;
+}
+
+span.updateBtn {
+    color: green;
+    width: 50px;
+}
+
+input {
+    border: 1px solid #666;
+}
+
+input::placeholder {
+    color: #bbb;
+}
