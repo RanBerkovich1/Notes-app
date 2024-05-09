@@ -5,37 +5,37 @@
             {
                 "filePath": "@radix-ui/react-icons",
                 "exportName": "MagnifyingGlassIcon",
-                "name": "MagnifyingGlassIcon"
+                "name": "Magnifying Glass"
             },
             {
                 "filePath": "@radix-ui/react-icons",
                 "exportName": "DrawingPinFilledIcon",
-                "name": "DrawingPinFilledIcon"
+                "name": "Drawing Pin Filled"
             },
             {
                 "filePath": "@radix-ui/react-icons",
                 "exportName": "DrawingPinIcon",
-                "name": "DrawingPinIcon"
+                "name": "Drawing Pin"
             },
             {
                 "filePath": "@radix-ui/react-icons",
                 "exportName": "DotsVerticalIcon",
-                "name": "DotsVerticalIcon"
+                "name": "Dots Vertical"
             },
             {
                 "filePath": "@radix-ui/react-icons",
                 "exportName": "PlusIcon",
-                "name": "PlusIcon"
+                "name": "Plus"
             },
             {
                 "filePath": "@radix-ui/react-icons",
                 "exportName": "TrashIcon",
-                "name": "TrashIcon"
+                "name": "Trash"
             },
             {
                 "filePath": "@radix-ui/react-icons",
                 "exportName": "ReaderIcon",
-                "name": "ReaderIcon"
+                "name": "Reader"
             }
         ]
     }
