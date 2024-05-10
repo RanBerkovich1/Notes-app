@@ -1,42 +1,42 @@
-[  
-    {
-        "name": "Radix Icons",
-        "components": [
-            {
-                "filePath": "@radix-ui/react-icons",
-                "exportName": "MagnifyingGlassIcon",
-                "name": "Magnifying Glass"
-            },
-            {
-                "filePath": "@radix-ui/react-icons",
-                "exportName": "DrawingPinFilledIcon",
-                "name": "Drawing Pin Filled"
-            },
-            {
-                "filePath": "@radix-ui/react-icons",
-                "exportName": "DrawingPinIcon",
-                "name": "Drawing Pin"
-            },
-            {
-                "filePath": "@radix-ui/react-icons",
-                "exportName": "DotsVerticalIcon",
-                "name": "Dots Vertical"
-            },
-            {
-                "filePath": "@radix-ui/react-icons",
-                "exportName": "PlusIcon",
-                "name": "Plus"
-            },
-            {
-                "filePath": "@radix-ui/react-icons",
-                "exportName": "TrashIcon",
-                "name": "Trash"
-            },
-            {
-                "filePath": "@radix-ui/react-icons",
-                "exportName": "ReaderIcon",
-                "name": "Reader"
-            }
-        ]
-    }
+[
+  {
+    "name": "Radix Icons",
+    "components": [
+      {
+        "filePath": "@radix-ui/react-icons",
+        "exportName": "MagnifyingGlassIcon",
+        "name": "Magnifying Glass"
+      },
+      {
+        "filePath": "@radix-ui/react-icons",
+        "exportName": "DrawingPinFilledIcon",
+        "name": "Drawing Pin Filled"
+      },
+      {
+        "filePath": "@radix-ui/react-icons",
+        "exportName": "DrawingPinIcon",
+        "name": "Drawing Pin"
+      },
+      {
+        "filePath": "@radix-ui/react-icons",
+        "exportName": "DotsVerticalIcon",
+        "name": "Dots Vertical"
+      },
+      {
+        "filePath": "@radix-ui/react-icons",
+        "exportName": "PlusIcon",
+        "name": "Plus"
+      },
+      {
+        "filePath": "@radix-ui/react-icons",
+        "exportName": "TrashIcon",
+        "name": "Trash"
+      },
+      {
+        "filePath": "@radix-ui/react-icons",
+        "exportName": "ReaderIcon",
+        "name": "Reader"
+      }
+    ]
+  }
 ]
