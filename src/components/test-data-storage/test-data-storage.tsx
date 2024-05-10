@@ -79,7 +79,7 @@ export const TestDataStorage = () => {
                     </div>
                 ))}
             </div>
-            <h1 className={styles.tmp}>Trash</h1>
+            <h1 className={styles.issueHere}>Trash</h1>
             <div className={styles.trash}>
                 {trash.map((note) => (
                     <div className={Classnames(styles.note, styles.disabled)} key={note.id}>
