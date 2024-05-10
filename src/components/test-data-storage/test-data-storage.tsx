@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
-import classNames from 'classnames';
+import { useState, useEffect } from 'react';
 import styles from './test-data-storage.module.scss';
-import { StorageService } from '../../services/storage-service';
+import { useNoteStore } from '../../data-management/store';
+import Classnames from 'classnames';
 
 export const TestDataStorage = () => {
-    const storageService = new StorageService();
+    const { notes, trash, addNote, editNote, deleteNote, getNotes, getTrash } = useNoteStore();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [notes, setNotes] = useState(storageService.getAllNotes());
+
+    useEffect(() => {
+        getNotes();
+    }, [getNotes]);
+
+    useEffect(() => {
+        getTrash();
+    }, [getTrash]);
 
     const handleAddClick = () => {
-        storageService.addNote({
+        if (!title.trim() || !description.trim()) return;
+        addNote({
             title: title,
             description: description,
             isPinned: false,
@@ -18,23 +26,20 @@ export const TestDataStorage = () => {
 
         setTitle('');
         setDescription('');
-        setNotes(storageService.getAllNotes());
     };
 
     const handleUpdateClick = (id: string) => {
-        const noteToEdit = storageService.getNoteById(id);
+        const noteToEdit = notes.find((note) => note.id === id);
         if (noteToEdit) {
-            storageService.editNote(noteToEdit.id, {
+            editNote(noteToEdit.id, {
                 title: 'Updated title',
                 description: 'Updated description',
             });
         }
-        setNotes(storageService.getAllNotes());
     };
 
-    const handleDeleteClick = (id: string) => {
-        storageService.deleteNote(id, true);
-        setNotes(storageService.getAllNotes());
+    const handleDeleteClick = (id: string, permanently = false) => {
+        deleteNote(id, permanently);
     };
 
     return (
@@ -52,23 +57,44 @@ export const TestDataStorage = () => {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />{' '}
-                <span onClick={handleAddClick} className={styles.delBtn}>
-                    Add
+                <span onClick={handleAddClick} className={styles.addBtn}>
+                    Add a note
                 </span>
             </div>
-            {notes.map((note) => (
-                <div className={styles.notes} key={note.id}>
-                    <span>{note.id}</span>
-                    <span className={styles.title}>{note.title}</span>{' '}
-                    <span>{note.description}</span>{' '}
-                    <span onClick={() => handleUpdateClick(note.id)} className={styles.updateBtn}>
-                        Update
-                    </span>{' '}
-                    <span onClick={() => handleDeleteClick(note.id)} className={styles.delBtn}>
-                        Delete
-                    </span>
-                </div>
-            ))}
+            <div className={styles.notes}>
+                {notes.map((note) => (
+                    <div className={styles.note} key={note.id}>
+                        <span>{note.id}</span>
+                        <span className={styles.title}>{note.title}</span>{' '}
+                        <span>{note.description}</span>{' '}
+                        <span
+                            onClick={() => handleUpdateClick(note.id)}
+                            className={styles.updateBtn}
+                        >
+                            Update
+                        </span>{' '}
+                        <span onClick={() => handleDeleteClick(note.id)} className={styles.delBtn}>
+                            Move to trash
+                        </span>
+                    </div>
+                ))}
+            </div>
+            <h1 className={styles.tmp}>Trash</h1>
+            <div className={styles.trash}>
+                {trash.map((note) => (
+                    <div className={Classnames(styles.note, styles.disabled)} key={note.id}>
+                        <span>{note.id}</span>
+                        <span className={styles.title}>{note.title}</span>{' '}
+                        <span>{note.description}</span>{' '}
+                        <span
+                            onClick={() => handleDeleteClick(note.id, true)}
+                            className={styles.delBtn}
+                        >
+                            Delete
+                        </span>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

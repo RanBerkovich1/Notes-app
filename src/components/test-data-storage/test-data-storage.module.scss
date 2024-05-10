@@ -2,11 +2,16 @@
 
 .root {
     font-size: 12px;
+}
+
+.notes,
+.trash {
+    min-height: 100px;
     max-height: 300px;
     overflow: scroll;
 }
 
-.notes span {
+.note span {
     display: inline-block;
     height: 20px;
     width: 100px;
@@ -14,11 +19,21 @@
     text-overflow: ellipsis;
 }
 
+.note.disabled span {
+    color: #ccc;
+}
+
 .title {
     font-weight: bold;
 }
+.addBtn {
+    cursor: pointer;
+    color: green;
+    padding: 0 10px;
+}
 
 .delBtn,
+.note.disabled .delBtn,
 .updateBtn {
     cursor: pointer;
     color: red;
@@ -31,9 +46,18 @@ span.updateBtn {
 }
 
 input {
+    width: 160px;
     border: 1px solid #666;
+    margin-bottom: 30px;
 }
 
 input::placeholder {
     color: #bbb;
+}
+.disabled {
+    opacity: 1;
+}
+.tmp {
+    font-weight: 700;
+    font-size: 18px;
 }
