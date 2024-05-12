@@ -32,5 +32,8 @@
       "@styles/*": "./src/styles/*"
     }
   },
-  "svgLoader": "svgr"
+  "svgLoader": "svgr",
+  "addPanel": {
+    "assets": ["@codux-boards/radix-ui-primitives"]
+  }
 }
