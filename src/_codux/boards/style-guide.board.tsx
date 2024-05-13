@@ -1,8 +1,7 @@
-import '../../styles/common/style-guide.css';
+import style from '../../styles/common/style-guide.module.scss';
 import { createBoard } from '@wixc3/react-board';
 import StyleGuide_board_module from './style-guide.board.module.scss';
 import Classnames from 'classnames';
-import SectionSvg from '../../assets/section.svg';
 
 export default createBoard({
     name: 'StyleGuide',
@@ -10,154 +9,64 @@ export default createBoard({
         <div className={Classnames(StyleGuide_board_module.root)}>
             <div className={StyleGuide_board_module.pageHeader}>
                 <h1 className={StyleGuide_board_module.TitleHeader}>Style Guide</h1>
-                <span className={StyleGuide_board_module.logo}>LOGO</span>
             </div>
             <div className={StyleGuide_board_module.SectionContainer}>
                 <div className={StyleGuide_board_module.SectionTitle}>
-                    <img src="" />
-                    <h2></h2>
+                    <h2 className={style['sectionTitle']}>Typography</h2>
                 </div>
-                Typography
                 <p className={StyleGuide_board_module.SectionSubtitle}>
                     Defines the fonts used for headings, body text, labels, etc., including size,
                     weight, and spacing.
                 </p>
             </div>
             <div className={StyleGuide_board_module.subsectionContainer}>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Font Family</h2>
-                <div className={StyleGuide_board_module.FlexContainer}>
-                    <div className={StyleGuide_board_module.FontFamilyContainer}>
-                        <span className={StyleGuide_board_module.FontFamilyAa}>Aa</span>
-                        <span className={Classnames('pNormal')}>DM Sans</span>
-                    </div>
-                </div>
-            </div>
-            <div className={StyleGuide_board_module.subsectionContainer}>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Main Heading / h1</h2>
                 <div className={StyleGuide_board_module.grid}>
                     <div>
-                        <h1 className={Classnames('h1Bold', StyleGuide_board_module.margin)}>
-                            Heading 42
+                        <h1 className={style['sectionTitle']}>Section Title</h1>
+                        <div className={StyleGuide_board_module.subtitleValue}>
+                            Bold 16px <br />
+                        </div>
+                    </div>
+                    <div>
+                        <h1>CardTitle</h1>
+                        <div className={StyleGuide_board_module.subtitleValue}>
+                            Bold 12px <br />
+                        </div>
+                    </div>
+                    <div>
+                        <h1>CardText</h1>
+                        <div className={StyleGuide_board_module.subtitleValue}>
+                            Regular 12px
+                            <br />
+                        </div>
+                    </div>
+                    <div>
+                        <h1>NoteTitle</h1>
+                        <div className={StyleGuide_board_module.subtitleValue}>
+                            Bold 20px
+                            <br />
+                        </div>
+                    </div>
+                    <div>
+                        <h1>
+                            NoteText
+                            <div className={StyleGuide_board_module.subtitleValue}>
+                                Regular 16px
+                                <br />
+                            </div>
                         </h1>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            h1Bold <br /> DM Sans, 700
-                        </div>
                     </div>
                     <div>
-                        <h1 className={Classnames('h1Normal', StyleGuide_board_module.margin)}>
-                            Heading 42
-                        </h1>
+                        <h1>Navigation</h1>
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            h1Normal <br /> DM Sans, 400
-                        </div>
-                    </div>
-                    <div>
-                        <h1 className={Classnames('h1Light', StyleGuide_board_module.margin)}>
-                            Heading 42
-                        </h1>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            h1Light <br /> DM Sans, 300
-                        </div>
-                    </div>
-                </div>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Subheading / h2</h2>
-                <div className={StyleGuide_board_module.grid}>
-                    <div>
-                        <h2 className={Classnames('h2Bold', StyleGuide_board_module.margin)}>
-                            Heading 28
-                        </h2>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            h2Bold <br /> DM Sans, 700
-                        </div>
-                    </div>
-                    <div>
-                        <h2 className={Classnames('h2Normal', StyleGuide_board_module.margin)}>
-                            Heading 28
-                        </h2>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            h2Normal
-                            <br />
-                            DM Sans, 400
-                        </div>
-                    </div>
-                    <div>
-                        <h2 className={Classnames('h2Light', StyleGuide_board_module.margin)}>
-                            Heading 28
-                        </h2>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            h2Light <br /> DM Sans, 300
-                        </div>
-                    </div>
-                </div>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Body / p</h2>
-                <div className={StyleGuide_board_module.grid}>
-                    <div>
-                        <p className={Classnames('pBold', StyleGuide_board_module.margin)}>
-                            Paragraph 12
-                        </p>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            pBold <br /> DM Sans, 700
-                        </div>
-                    </div>
-                    <div>
-                        <p className={Classnames('pNormal', StyleGuide_board_module.margin)}>
-                            Paragraph 12
-                        </p>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            pNormal
-                            <br />
-                            DM Sans, 400
-                        </div>
-                    </div>
-                    <div>
-                        <p className={Classnames('pLight', StyleGuide_board_module.margin)}>
-                            Paragraph 12
-                        </p>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            pLight
-                            <br />
-                            DM Sans, 300
-                        </div>
-                    </div>
-                </div>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Smaller Text</h2>
-                <div className={StyleGuide_board_module.grid}>
-                    <div>
-                        <p className={Classnames('smallBold', StyleGuide_board_module.margin)}>
-                            Detail Text 11
-                        </p>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            smallBold
-                            <br />
-                            DM Sans, 700
-                        </div>
-                    </div>
-                    <div>
-                        <p className={Classnames('smallNormal', StyleGuide_board_module.margin)}>
-                            Detail Text 11
-                        </p>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            smallNormal
-                            <br />
-                            DM Sans, 400
-                        </div>
-                    </div>
-                    <div>
-                        <p className={Classnames('smallLight', StyleGuide_board_module.margin)}>
-                            Detail Text 11
-                        </p>
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            smallLight
-                            <br />
-                            DM Sans, 300
+                            Regular 14px <br />
                         </div>
                     </div>
                 </div>
             </div>
             <div className={StyleGuide_board_module.SectionContainer}>
                 <div className={StyleGuide_board_module.SectionTitle}>
-                    <img src={SectionSvg} />
-                    <h2>Colors</h2>
+                    <h2 className={style['sectionTitle']}>Colors</h2>
                 </div>
                 <p className={StyleGuide_board_module.SectionSubtitle}>
                     Colors are a powerful tool in design for communicating meaning and influencing
@@ -166,255 +75,123 @@ export default createBoard({
                 </p>
             </div>
             <div className={StyleGuide_board_module.subsectionContainer}>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Primary / Blue</h2>
+                <h2 className={StyleGuide_board_module.subSectionTitle}>Primary / Grass</h2>
                 <div className={StyleGuide_board_module.FlexContainer}>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'b10')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                style['grass1']
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            b10
+                            grass1
                             <br />
-                            #F0F5FF
                         </div>
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'b20')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                StyleGuide_board_module.grass2
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            b20
-                            <br />
-                            #2F6FED
+                            grass2 <br />
                         </div>
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'b30')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                style['grass3']
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            b30
+                            grass3
                             <br />
-                            #1D5BD6
                         </div>
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'b40')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                style['grass4']
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            b40
-                            <br />
-                            #1E4EAE{' '}
+                            grass4
+                            <br />{' '}
+                        </div>
+                    </div>
+                    <div>
+                        <div
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                style['grass5']
+                            )}
+                        />
+                        <div className={StyleGuide_board_module.subtitleValue}>
+                            grass5
+                            <br />{' '}
+                        </div>
+                    </div>
+                    <div>
+                        <div
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                style['grassdark']
+                            )}
+                        />
+                        <div className={StyleGuide_board_module.subtitleValue}>
+                            grassdark
+                            <br />{' '}
                         </div>
                     </div>
                 </div>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Secondary / Dark</h2>
+                <h2 className={StyleGuide_board_module.subSectionTitle}>Secondary / Sand</h2>
                 <div className={StyleGuide_board_module.FlexContainer}>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'd10')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                style['sand1']
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            d10
+                            sand1
                             <br />
-                            #E0E0E8
                         </div>
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'd12')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                style['sand2']
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            d20
-                            <br /> #AFAFB6
+                            sand2
+                            <br />
                         </div>
                     </div>
                     <div>
                         <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'd30')}
+                            className={Classnames(
+                                StyleGuide_board_module.colorContainer,
+                                style['sand3']
+                            )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>
-                            d30
+                            sand3
                             <br />
-                            #808087
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'd40')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            d40
-                            <br />
-                            #2B2B31{' '}
-                        </div>
-                    </div>
-                </div>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Warning </h2>
-                <div className={StyleGuide_board_module.FlexContainer}>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'w10')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            w10
-                            <br />
-                            #FEF4E9
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'w20')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            w20
-                            <br />
-                            #FCD0A0
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'w30')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            w30
-                            <br />
-                            ##FABF7A
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'w40')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            w40
-                            <br />
-                            #2B2B31{' '}
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'w50')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            w40
-                            <br />
-                            #AA661E{' '}
-                        </div>
-                    </div>
-                </div>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Error</h2>
-                <div className={StyleGuide_board_module.FlexContainer}>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'e10')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            e10
-                            <br />
-                            #feecec
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'e20')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            e20
-                            <br />
-                            #fab2af
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'e30')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            e30
-                            <br />
-                            #f26561
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'e40')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            e40
-                            <br />
-                            #ec6d69{' '}
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 'e50')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            e40
-                            <br />
-                            #a5302c{' '}
-                        </div>
-                    </div>
-                </div>
-                <h2 className={StyleGuide_board_module.subSectionTitle}>Success</h2>
-                <div className={StyleGuide_board_module.FlexContainer}>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 's10')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            s0
-                            <br />
-                            #E8F8F1
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 's20')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            s20
-                            <br />
-                            #9FE1C2
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 's30')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            s30
-                            <br />
-                            #76D6AB
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 's40')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            s40
-                            <br />
-                            #76D6AB{' '}
-                        </div>
-                    </div>
-                    <div>
-                        <div
-                            className={Classnames(StyleGuide_board_module.colorContainer, 's50')}
-                        />
-                        <div className={StyleGuide_board_module.subtitleValue}>
-                            s50
-                            <br />
-                            #0F804E{' '}
                         </div>
                     </div>
                 </div>
             </div>
             <div className={StyleGuide_board_module.SectionContainer}>
                 <div className={StyleGuide_board_module.SectionTitle}>
-                    <img src={SectionSvg} />
-                    <h2>Shadows</h2>
+                    <h2 className={style['sectionTitle']}>Shadows</h2>
                 </div>
                 <p className={StyleGuide_board_module.SectionSubtitle}>
                     Shadows help create the illusion of depth and dimension in a flat, 2D digital
@@ -428,8 +205,8 @@ export default createBoard({
                     <div>
                         <div
                             className={Classnames(
-                                'shadow100',
-                                StyleGuide_board_module.shadowContainer,
+                                style['shadow100'],
+                                StyleGuide_board_module.shadowContainer
                             )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>shadow100</div>
@@ -437,8 +214,8 @@ export default createBoard({
                     <div>
                         <div
                             className={Classnames(
-                                'shadow200',
-                                StyleGuide_board_module.shadowContainer,
+                                style['shadow200'],
+                                StyleGuide_board_module.shadowContainer
                             )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>shadow200</div>
@@ -446,8 +223,8 @@ export default createBoard({
                     <div>
                         <div
                             className={Classnames(
-                                'shadow300',
-                                StyleGuide_board_module.shadowContainer,
+                                style['shadow300'],
+                                StyleGuide_board_module.shadowContainer
                             )}
                         />
                         <div className={StyleGuide_board_module.subtitleValue}>shadow300</div>
@@ -456,8 +233,7 @@ export default createBoard({
             </div>
             <div className={StyleGuide_board_module.SectionContainer}>
                 <div className={StyleGuide_board_module.SectionTitle}>
-                    <img src={SectionSvg} />
-                    <h2>Spacing</h2>
+                    <h2 className={style['sectionTitle']}>Spacing</h2>
                 </div>
                 <p className={StyleGuide_board_module.SectionSubtitle}>
                     Spacing is a crucial element in design systems, as it dictates the negative
@@ -473,7 +249,7 @@ export default createBoard({
                             <div
                                 className={Classnames(
                                     StyleGuide_board_module.spacingBox,
-                                    'margin2',
+                                    style['margin2']
                                 )}
                             />
                         </div>
@@ -487,8 +263,8 @@ export default createBoard({
                         <div className={StyleGuide_board_module.marginContainer}>
                             <div
                                 className={Classnames(
-                                    'margin4',
-                                    StyleGuide_board_module.spacingBox,
+                                    style['margin4'],
+                                    StyleGuide_board_module.spacingBox
                                 )}
                             />
                         </div>
@@ -503,7 +279,7 @@ export default createBoard({
                             <div
                                 className={Classnames(
                                     StyleGuide_board_module.spacingBox,
-                                    'margin6',
+                                    style['margin6']
                                 )}
                             />
                         </div>
@@ -518,7 +294,7 @@ export default createBoard({
                             <div
                                 className={Classnames(
                                     StyleGuide_board_module.spacingBox,
-                                    'margin12',
+                                    style['margin12']
                                 )}
                             />
                         </div>
@@ -533,7 +309,7 @@ export default createBoard({
                             <div
                                 className={Classnames(
                                     StyleGuide_board_module.spacingBox,
-                                    'margin16',
+                                    style['margin16']
                                 )}
                             />
                         </div>
@@ -548,7 +324,7 @@ export default createBoard({
                             <div
                                 className={Classnames(
                                     StyleGuide_board_module.spacingBox,
-                                    'margin24',
+                                    style['margin24']
                                 )}
                             />
                         </div>
@@ -563,7 +339,7 @@ export default createBoard({
                             <div
                                 className={Classnames(
                                     StyleGuide_board_module.spacingBox,
-                                    'margin32',
+                                    style['margin32']
                                 )}
                             />
                         </div>
@@ -578,7 +354,7 @@ export default createBoard({
                             <div
                                 className={Classnames(
                                     StyleGuide_board_module.spacingBox,
-                                    'margin40',
+                                    style['margin40']
                                 )}
                             />
                         </div>
@@ -595,7 +371,7 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.paddingContainer,
-                                'padding2',
+                                style['padding2']
                             )}
                         >
                             <div className={StyleGuide_board_module.spacingBox} />
@@ -609,8 +385,8 @@ export default createBoard({
                     <div>
                         <div
                             className={Classnames(
-                                'padding4',
-                                StyleGuide_board_module.paddingContainer,
+                                style['padding4'],
+                                StyleGuide_board_module.paddingContainer
                             )}
                         >
                             <div className={StyleGuide_board_module.spacingBox} />
@@ -625,7 +401,7 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.paddingContainer,
-                                'padding6',
+                                style['padding6']
                             )}
                         >
                             <div className={StyleGuide_board_module.spacingBox} />
@@ -640,7 +416,7 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.paddingContainer,
-                                'padding8',
+                                style['padding8']
                             )}
                         >
                             <div className={StyleGuide_board_module.spacingBox} />
@@ -655,7 +431,7 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.paddingContainer,
-                                'padding12',
+                                style['padding12']
                             )}
                         >
                             <div className={StyleGuide_board_module.spacingBox} />
@@ -670,7 +446,7 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.paddingContainer,
-                                'padding16',
+                                style['padding16']
                             )}
                         >
                             <div className={StyleGuide_board_module.spacingBox} />
@@ -685,7 +461,7 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.paddingContainer,
-                                'padding24',
+                                style['padding24']
                             )}
                         >
                             <div className={StyleGuide_board_module.spacingBox} />
@@ -700,7 +476,7 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.paddingContainer,
-                                'padding32',
+                                style['padding32']
                             )}
                         >
                             <div className={StyleGuide_board_module.spacingBox} />
@@ -715,7 +491,7 @@ export default createBoard({
                         <div
                             className={Classnames(
                                 StyleGuide_board_module.paddingContainer,
-                                'padding40',
+                                style['padding40']
                             )}
                         >
                             <div className={StyleGuide_board_module.spacingBox} />
