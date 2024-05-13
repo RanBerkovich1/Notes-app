@@ -9,7 +9,7 @@ export interface NotesState {
     addNote: (newNote: Pick<Note, 'title' | 'description'>) => void;
     updateNote: (
         id: string,
-        updatedNote: Partial<Pick<Note, 'title' | 'description' | 'isPinned'>>
+        updateNote: Partial<Pick<Note, 'title' | 'description' | 'isPinned'>>
     ) => void;
     deleteNote: (id: string, permanently?: boolean) => void;
     syncNotes: () => void;
@@ -45,9 +45,9 @@ export const useNoteStore = create<NotesState>((set) => {
 
     const updateNote = async (
         id: string,
-        updatedNote: Partial<Pick<Note, 'title' | 'description' | 'isPinned'>>
+        updateNote: Partial<Pick<Note, 'title' | 'description' | 'isPinned'>>
     ) => {
-        const editedNote = await storageService.updateNote(id, updatedNote);
+        const editedNote = await storageService.updateNote(id, updateNote);
         if (editedNote) {
             await syncNotes();
         }

@@ -17,7 +17,7 @@ export class StorageService {
             if (note) {
                 resolve(note);
             } else {
-                reject('No such an note in the storage');
+                reject(`No such a note in the storage. Id: ${id}`);
             }
         });
     }
@@ -41,33 +41,37 @@ export class StorageService {
 
     async updateNote(
         id: string,
-        updatedNote: Partial<Pick<Note, 'title' | 'description' | 'isPinned' | 'deletedAt'>>
+        updateNote: Partial<Pick<Note, 'title' | 'description' | 'isPinned' | 'deletedAt'>>
     ): Promise<Note> {
         const notes = await this.getAllNotes();
-        const noteIndex = notes.findIndex((note) => note.id === id);
-        if (noteIndex !== -1) {
-            const modifiedNote = { ...notes[noteIndex], ...updatedNote, modifiedAt: new Date() };
-            notes[noteIndex] = modifiedNote;
-            localStorage.setItem(STORAGE_NOTES_KEY, JSON.stringify(notes));
-            return modifiedNote;
-        } else {
-            throw new Error(`No such a note to update. Id: ${id}`);
-        }
+        return new Promise((resolve, reject) => {
+            const noteIndex = notes.findIndex((note) => note.id === id);
+            if (noteIndex !== -1) {
+                const modifiedNote = { ...notes[noteIndex], ...updateNote, modifiedAt: new Date() };
+                notes[noteIndex] = modifiedNote;
+                localStorage.setItem(STORAGE_NOTES_KEY, JSON.stringify(notes));
+                resolve(modifiedNote);
+            } else {
+                reject(`No such a note to update. Id: ${id}`);
+            }
+        });
     }
 
     async deleteNote(id: string, permanently = false): Promise<void> {
         let notes = await this.getAllNotes();
-        if (permanently) {
-            notes = notes.filter((item) => item.id !== id);
-            console.log(notes);
-        } else {
-            const noteIndex = notes.findIndex((note) => note.id === id);
-            if (noteIndex !== -1) {
-                notes[noteIndex].deletedAt = new Date();
+        return new Promise((resolve, reject) => {
+            if (permanently) {
+                notes = notes.filter((item) => item.id !== id);
             } else {
-                throw new Error(`No such a note to move to trash. Id: ${id}`);
+                const noteIndex = notes.findIndex((note) => note.id === id);
+                if (noteIndex !== -1) {
+                    notes[noteIndex].deletedAt = new Date();
+                } else {
+                    reject(`No such a note to move to trash. Id: ${id}`);
+                }
             }
-        }
-        localStorage.setItem(STORAGE_NOTES_KEY, JSON.stringify(notes));
+            localStorage.setItem(STORAGE_NOTES_KEY, JSON.stringify(notes));
+            resolve();
+        });
     }
 }
