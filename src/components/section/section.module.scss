@@ -1,0 +1,18 @@
+@import '../../styles/common/variables.module.scss';
+
+.root {
+    width: 100%;
+}
+
+.title {
+    padding: $size8;
+    border-bottom: 1px solid $sand3;
+    font: $sectionTitle;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $size16;
+    padding: $size16 0px;
+}
