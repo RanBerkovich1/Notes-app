@@ -1,18 +1,12 @@
 import { createBoard } from '@wixc3/react-board';
-import { ContextMenu } from '../../../components/context-menu/context-menu';
-import { Theme } from '@radix-ui/themes';
 import { Note } from '../../../components/note/note';
+import ContextMenuDemo from '../../../components/context-menu/context-menu';
 
 export default createBoard({
     name: 'ContextMenu',
-    Board: () => (
-        <Theme>
-            <ContextMenu>
-                <div>
-                    <Note />
-                </div>
-            </ContextMenu>
-        </Theme>
-    ),
+    Board: () => <ContextMenuDemo />,
     isSnippet: true,
+    environmentProps: {
+        canvasHeight: 117,
+    },
 });

@@ -1,30 +1,55 @@
-import classNames from 'classnames';
-import styles from './context-menu.module.scss';
-import { ContextMenu as ContextMenuRadix } from '@radix-ui/themes';
+import React from 'react';
+import * as ContextMenu from '@radix-ui/react-context-menu';
+import style from './context-menu.module.scss';
 
-export interface ContextMenuProps {
-    className?: string;
-    children: React.ReactNode;
-}
+const ContextMenuDemo = () => {
+    const [bookmarksChecked, setBookmarksChecked] = React.useState(true);
+    const [urlsChecked, setUrlsChecked] = React.useState(false);
+    const [person, setPerson] = React.useState('pedro');
 
-/**
- * This component was created using Codux's Default new component template.
- * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
- */
-export const ContextMenu = ({ className, children }: ContextMenuProps) => {
     return (
-        <ContextMenuRadix.Root>
-            <ContextMenuRadix.Trigger>{children}</ContextMenuRadix.Trigger>
-            <ContextMenuRadix.Content>
-                <ContextMenuRadix.Item>Pin Note</ContextMenuRadix.Item>
+        <ContextMenu.Root>
+            <ContextMenu.Trigger className={style.ContextMenuTrigger}>
+                Right-click here.
+            </ContextMenu.Trigger>
+            <ContextMenu.Portal>
+                <ContextMenu.Content className={style.ContextMenuContent}>
+                    <ContextMenu.Item className={style.ContextMenuItem}>
+                        Back <div className={style.RightSlot}>⌘+[</div>
+                    </ContextMenu.Item>
 
-                <ContextMenuRadix.Separator />
-                <ContextMenuRadix.Item>New Note</ContextMenuRadix.Item>
-                <ContextMenuRadix.Item>Duplicate Note</ContextMenuRadix.Item>
+                    <ContextMenu.Separator className={style.ContextMenuSeparator} />
 
-                <ContextMenuRadix.Separator />
-                <ContextMenuRadix.Item color="red">Delete</ContextMenuRadix.Item>
-            </ContextMenuRadix.Content>
-        </ContextMenuRadix.Root>
+                    <ContextMenu.CheckboxItem
+                        checked={bookmarksChecked}
+                        onCheckedChange={setBookmarksChecked}
+                        className={style.ContextMenuCheckboxItem}
+                    >
+                        <ContextMenu.ItemIndicator className={style.ContextMenuItemIndicator}>
+                            {'<CheckIcon />'}
+                        </ContextMenu.ItemIndicator>
+                        Show Bookmarks <div className={style.RightSlot}>⌘+B</div>
+                    </ContextMenu.CheckboxItem>
+
+                    <ContextMenu.Label className={style.ContextMenuLabel}>People</ContextMenu.Label>
+                    <ContextMenu.RadioGroup value={person} onValueChange={setPerson}>
+                        <ContextMenu.RadioItem value="pedro" className={style.ContextMenuRadioItem}>
+                            <ContextMenu.ItemIndicator className={style.ContextMenuItemIndicator}>
+                                {'<DotFilledIcon />'}
+                            </ContextMenu.ItemIndicator>
+                            Pedro Duarte
+                        </ContextMenu.RadioItem>
+                        <ContextMenu.RadioItem value="colm" className={style.ContextMenuRadioItem}>
+                            <ContextMenu.ItemIndicator className={style.ContextMenuItemIndicator}>
+                                {'<DotFilledIcon />'}
+                            </ContextMenu.ItemIndicator>
+                            Colm Tuite
+                        </ContextMenu.RadioItem>
+                    </ContextMenu.RadioGroup>
+                </ContextMenu.Content>
+            </ContextMenu.Portal>
+        </ContextMenu.Root>
     );
 };
+
+export default ContextMenuDemo;
