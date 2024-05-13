@@ -4,24 +4,24 @@ import { useNoteStore } from '../../data-management/store';
 import Classnames from 'classnames';
 
 export const TestDataStorage = () => {
-    const { notes, trash, addNote, editNote, deleteNote, getNotes, getTrash } = useNoteStore();
+    const { notes, trash, addNote, updateNote, deleteNote, restoreNote, syncNotes, syncTrash } =
+        useNoteStore();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
     useEffect(() => {
-        getNotes();
-    }, [getNotes]);
+        syncNotes();
+    }, [syncNotes]);
 
     useEffect(() => {
-        getTrash();
-    }, [getTrash]);
+        syncTrash();
+    }, [syncTrash]);
 
     const handleAddClick = () => {
         if (!title.trim() || !description.trim()) return;
         addNote({
             title: title,
             description: description,
-            isPinned: false,
         });
 
         setTitle('');
@@ -31,7 +31,7 @@ export const TestDataStorage = () => {
     const handleUpdateClick = (id: string) => {
         const noteToEdit = notes.find((note) => note.id === id);
         if (noteToEdit) {
-            editNote(noteToEdit.id, {
+            updateNote(noteToEdit.id, {
                 title: 'Updated title',
                 description: 'Updated description',
             });
@@ -40,6 +40,9 @@ export const TestDataStorage = () => {
 
     const handleDeleteClick = (id: string, permanently = false) => {
         deleteNote(id, permanently);
+    };
+    const handleRestoreClick = (id: string) => {
+        restoreNote(id);
     };
 
     return (
@@ -57,7 +60,7 @@ export const TestDataStorage = () => {
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />{' '}
-                <span onClick={handleAddClick} className={styles.addBtn}>
+                <span onClick={handleAddClick} className={Classnames(styles.addBtn, styles.btn)}>
                     Add a note
                 </span>
             </div>
@@ -69,11 +72,14 @@ export const TestDataStorage = () => {
                         <span>{note.description}</span>{' '}
                         <span
                             onClick={() => handleUpdateClick(note.id)}
-                            className={styles.updateBtn}
+                            className={Classnames(styles.updateBtn, styles.btn)}
                         >
                             Update
                         </span>{' '}
-                        <span onClick={() => handleDeleteClick(note.id)} className={styles.delBtn}>
+                        <span
+                            onClick={() => handleDeleteClick(note.id)}
+                            className={Classnames(styles.delBtn, styles.btn)}
+                        >
                             Move to trash
                         </span>
                     </div>
@@ -87,8 +93,14 @@ export const TestDataStorage = () => {
                         <span className={styles.title}>{note.title}</span>{' '}
                         <span>{note.description}</span>{' '}
                         <span
+                            onClick={() => handleRestoreClick(note.id)}
+                            className={Classnames(styles.restoreBtn, styles.btn)}
+                        >
+                            Restore
+                        </span>{' '}
+                        <span
                             onClick={() => handleDeleteClick(note.id, true)}
-                            className={styles.delBtn}
+                            className={Classnames(styles.delBtn, styles.btn)}
                         >
                             Delete
                         </span>
