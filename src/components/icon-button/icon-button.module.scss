@@ -7,4 +7,9 @@
     &:hover {
         background-color: $grass5;
     }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    cursor: pointer;
 }
