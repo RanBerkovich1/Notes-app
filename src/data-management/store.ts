@@ -4,7 +4,6 @@ import { Note } from './types';
 
 export interface NotesState {
     notes: Note[];
-    trash: Note[];
 
     addNote: (newNote: Pick<Note, 'title' | 'description'>) => void;
     updateNote: (
@@ -13,7 +12,6 @@ export interface NotesState {
     ) => void;
     deleteNote: (id: string, permanently?: boolean) => void;
     syncNotes: () => void;
-    syncTrash: () => void;
     getNoteById: (id: string) => Promise<Note | undefined>;
     restoreNote: (id: string) => Promise<void>;
     pinNote: (id: string) => Promise<void>;
@@ -25,12 +23,7 @@ const storageService = new StorageService();
 export const useNoteStore = create<NotesState>((set) => {
     const syncNotes = async () => {
         const notes = await storageService.getAllNotes();
-        set({ notes: notes.filter((note) => !note.deletedAt) });
-    };
-
-    const syncTrash = async () => {
-        const trash = await storageService.getAllNotes();
-        set({ trash: trash.filter((note) => note.deletedAt) });
+        set({ notes });
     };
 
     const getNoteById = async (id: string): Promise<Note | undefined> => {
@@ -56,13 +49,11 @@ export const useNoteStore = create<NotesState>((set) => {
     const deleteNote = async (id: string, permanently = false) => {
         await storageService.deleteNote(id, permanently);
         await syncNotes();
-        await syncTrash();
     };
 
     const restoreNote = async (id: string) => {
         await storageService.updateNote(id, { deletedAt: undefined });
         await syncNotes();
-        await syncTrash();
     };
 
     const pinNote = async (id: string) => {
@@ -85,7 +76,6 @@ export const useNoteStore = create<NotesState>((set) => {
         notes: [],
         trash: [],
         syncNotes,
-        syncTrash,
         getNoteById,
         addNote,
         updateNote,

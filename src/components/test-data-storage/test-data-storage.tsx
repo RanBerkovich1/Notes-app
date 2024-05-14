@@ -4,18 +4,13 @@ import { useNoteStore } from '../../data-management/store';
 import Classnames from 'classnames';
 
 export const TestDataStorage = () => {
-    const { notes, trash, addNote, updateNote, deleteNote, restoreNote, syncNotes, syncTrash } =
-        useNoteStore();
+    const { notes, addNote, updateNote, deleteNote, restoreNote, syncNotes } = useNoteStore();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
     useEffect(() => {
         syncNotes();
     }, [syncNotes]);
-
-    useEffect(() => {
-        syncTrash();
-    }, [syncTrash]);
 
     const handleAddClick = () => {
         if (!title.trim() || !description.trim()) return;
@@ -65,47 +60,51 @@ export const TestDataStorage = () => {
                 </span>
             </div>
             <div className={styles.notes}>
-                {notes.map((note) => (
-                    <div className={styles.note} key={note.id}>
-                        <span>{note.id}</span>
-                        <span className={styles.title}>{note.title}</span>{' '}
-                        <span>{note.description}</span>{' '}
-                        <span
-                            onClick={() => handleUpdateClick(note.id)}
-                            className={Classnames(styles.updateBtn, styles.btn)}
-                        >
-                            Update
-                        </span>{' '}
-                        <span
-                            onClick={() => handleDeleteClick(note.id)}
-                            className={Classnames(styles.delBtn, styles.btn)}
-                        >
-                            Move to trash
-                        </span>
-                    </div>
-                ))}
+                {notes
+                    .filter((note) => !note.deletedAt)
+                    .map((note) => (
+                        <div className={styles.note} key={note.id}>
+                            <span>{note.id}</span>
+                            <span className={styles.title}>{note.title}</span>{' '}
+                            <span>{note.description}</span>{' '}
+                            <span
+                                onClick={() => handleUpdateClick(note.id)}
+                                className={Classnames(styles.updateBtn, styles.btn)}
+                            >
+                                Update
+                            </span>{' '}
+                            <span
+                                onClick={() => handleDeleteClick(note.id)}
+                                className={Classnames(styles.delBtn, styles.btn)}
+                            >
+                                Move to trash
+                            </span>
+                        </div>
+                    ))}
             </div>
             <h2>Trash</h2>
             <div className={styles.trash}>
-                {trash.map((note) => (
-                    <div className={Classnames(styles.note, styles.disabled)} key={note.id}>
-                        <span>{note.id}</span>
-                        <span className={styles.title}>{note.title}</span>{' '}
-                        <span>{note.description}</span>{' '}
-                        <span
-                            onClick={() => handleRestoreClick(note.id)}
-                            className={Classnames(styles.restoreBtn, styles.btn)}
-                        >
-                            Restore
-                        </span>{' '}
-                        <span
-                            onClick={() => handleDeleteClick(note.id, true)}
-                            className={Classnames(styles.delBtn, styles.btn)}
-                        >
-                            Delete
-                        </span>
-                    </div>
-                ))}
+                {notes
+                    .filter((note) => note.deletedAt)
+                    .map((note) => (
+                        <div className={Classnames(styles.note, styles.disabled)} key={note.id}>
+                            <span>{note.id}</span>
+                            <span className={styles.title}>{note.title}</span>{' '}
+                            <span>{note.description}</span>{' '}
+                            <span
+                                onClick={() => handleRestoreClick(note.id)}
+                                className={Classnames(styles.restoreBtn, styles.btn)}
+                            >
+                                Restore
+                            </span>{' '}
+                            <span
+                                onClick={() => handleDeleteClick(note.id, true)}
+                                className={Classnames(styles.delBtn, styles.btn)}
+                            >
+                                Delete
+                            </span>
+                        </div>
+                    ))}
             </div>
         </div>
     );
