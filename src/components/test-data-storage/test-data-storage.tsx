@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import styles from './test-data-storage.module.scss';
-import { useNoteStore } from '../../data-management/store';
 import Classnames from 'classnames';
+import { useNotesStore } from '../../data-management/use-notes-store';
 
 export const TestDataStorage = () => {
-    const { notes, addNote, updateNote, deleteNote, restoreNote, syncNotes } = useNoteStore();
+    const { notes, addNote, updateNote, deleteNote, restoreNote, syncNotes } = useNotesStore();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
 
     useEffect(() => {
-        syncNotes();
+        void syncNotes();
     }, [syncNotes]);
 
     const handleAddClick = () => {

@@ -1,19 +1,33 @@
-import { Note } from './types';
+import { Note, StorageService } from '../types';
 
-const STORAGE_NOTES_KEY = 'notes';
+export class FakeDataService implements StorageService {
+    private notes: Note[];
 
-export class StorageService {
+    constructor() {
+        this.notes = [];
+        const date = new Date();
+        for (let i = 0; i < 3; i++) {
+            const note: Note = {
+                id: (Date.now() + i).toString(),
+                title: `Note ${i}`,
+                description: 'Lorem Ipsum Dolor Sit Amet',
+                createdAt: date,
+                modifiedAt: date,
+                isPinned: false,
+            };
+            this.notes.push(note);
+        }
+    }
+
     async getAllNotes(): Promise<Note[]> {
         return new Promise((resolve) => {
-            const notesData = localStorage.getItem(STORAGE_NOTES_KEY);
-            resolve(notesData ? JSON.parse(notesData) : []);
+            resolve(this.notes);
         });
     }
 
     async getNoteById(id: string): Promise<Note | undefined> {
-        const notes = await this.getAllNotes();
         return new Promise((resolve, reject) => {
-            const note = notes.find((note) => note.id === id);
+            const note = this.notes.find((note) => note.id === id);
             if (note) {
                 resolve(note);
             } else {
@@ -23,7 +37,6 @@ export class StorageService {
     }
 
     async addNote(newNote: Pick<Note, 'title' | 'description'>): Promise<Note> {
-        const notes = await this.getAllNotes();
         return new Promise((resolve) => {
             const createdAt = new Date();
             const note: Note = {
@@ -33,8 +46,7 @@ export class StorageService {
                 isPinned: false,
                 ...newNote,
             };
-            notes.push(note);
-            localStorage.setItem(STORAGE_NOTES_KEY, JSON.stringify(notes));
+            this.notes.push(note);
             resolve(note);
         });
     }
@@ -43,13 +55,15 @@ export class StorageService {
         id: string,
         updateNote: Partial<Pick<Note, 'title' | 'description' | 'isPinned' | 'deletedAt'>>
     ): Promise<Note> {
-        const notes = await this.getAllNotes();
         return new Promise((resolve, reject) => {
-            const noteIndex = notes.findIndex((note) => note.id === id);
+            const noteIndex = this.notes.findIndex((note) => note.id === id);
             if (noteIndex !== -1) {
-                const modifiedNote = { ...notes[noteIndex], ...updateNote, modifiedAt: new Date() };
-                notes[noteIndex] = modifiedNote;
-                localStorage.setItem(STORAGE_NOTES_KEY, JSON.stringify(notes));
+                const modifiedNote = {
+                    ...this.notes[noteIndex],
+                    ...updateNote,
+                    modifiedAt: new Date(),
+                };
+                this.notes[noteIndex] = modifiedNote;
                 resolve(modifiedNote);
             } else {
                 reject(`No such a note to update. Id: ${id}`);
@@ -58,19 +72,17 @@ export class StorageService {
     }
 
     async deleteNote(id: string, permanently = false): Promise<void> {
-        let notes = await this.getAllNotes();
         return new Promise((resolve, reject) => {
             if (permanently) {
-                notes = notes.filter((item) => item.id !== id);
+                this.notes = this.notes.filter((item) => item.id !== id);
             } else {
-                const noteIndex = notes.findIndex((note) => note.id === id);
+                const noteIndex = this.notes.findIndex((note) => note.id === id);
                 if (noteIndex !== -1) {
-                    notes[noteIndex].deletedAt = new Date();
+                    this.notes[noteIndex].deletedAt = new Date();
                 } else {
                     reject(`No such a note to move to trash. Id: ${id}`);
                 }
             }
-            localStorage.setItem(STORAGE_NOTES_KEY, JSON.stringify(notes));
             resolve();
         });
     }
