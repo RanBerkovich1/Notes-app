@@ -2,6 +2,7 @@ import { RouteObject } from 'react-router-dom';
 import { SiteWrapper } from './components/site-wrapper/site-wrapper';
 import { HomePage } from './components/home-page/home-page';
 import { Deleted } from './components/deleted/deleted';
+import { AddNotePage } from './components/add-note-page/add-note-page';
 
 export const routes: RouteObject[] = [
     {
@@ -10,6 +11,7 @@ export const routes: RouteObject[] = [
         children: [
             { index: true, element: <HomePage /> },
             { path: 'deleted', element: <Deleted /> },
+            { path: 'add-note', element: <AddNotePage /> }
         ],
     },
 ];
