@@ -3,20 +3,21 @@ import { Note, StorageService } from '../types';
 export class FakeDataService implements StorageService {
     private notes: Note[];
 
-    constructor() {
+    constructor(notes: Partial<Note>[]) {
         this.notes = [];
         const date = new Date();
-        for (let i = 0; i < 3; i++) {
+        notes.forEach((newNote, index) => {
             const note: Note = {
-                id: (Date.now() + i).toString(),
-                title: `Note ${i}`,
-                description: 'Lorem Ipsum Dolor Sit Amet',
+                id: (Date.now() + index).toString(),
+                title: `Note ${index}`,
+                description: '',
                 createdAt: date,
                 modifiedAt: date,
                 isPinned: false,
+                ...newNote,
             };
             this.notes.push(note);
-        }
+        });
     }
 
     async getAllNotes(): Promise<Note[]> {
