@@ -14,6 +14,11 @@
       },
       {
         "filePath": "@radix-ui/react-icons",
+        "exportName": "ChevronLeftIcon",
+        "name": "Chevron Left"
+      },
+      {
+        "filePath": "@radix-ui/react-icons",
         "exportName": "DrawingPinIcon",
         "name": "Drawing Pin"
       },
