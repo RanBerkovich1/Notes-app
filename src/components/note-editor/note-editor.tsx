@@ -1,29 +1,54 @@
 import classNames from 'classnames';
 import styles from './note-editor.module.scss';
-import { ChevronLeftIcon } from '@radix-ui/react-icons';
-import StyleGuide_module from '../../styles/common/style-guide.module.scss';
+import { ChevronLeftIcon, TrashIcon } from '@radix-ui/react-icons';
+import { Link } from 'react-router-dom';
 
 export interface NoteEditorProps {
+    title: string;
+    onTitleChange: (value: string) => void;
+    description: string;
+    onDescriptionChange: (value: string) => void;
+    onDelete?: () => void;
+    modifiedAt?: Date;
     className?: string;
 }
 
-/**
- * This component was created using Codux's Default new component template.
- * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
- */
-export const NoteEditor = ({ className }: NoteEditorProps) => {
+export const NoteEditor = ({
+    title,
+    onTitleChange,
+    description,
+    onDescriptionChange,
+    onDelete,
+    modifiedAt,
+    className,
+}: NoteEditorProps) => {
     return (
-        <article className={classNames(styles.root, StyleGuide_module.padding40)}>
-            <div className={styles.wrapper}>
-                <div className={styles.header}>
+        <article className={classNames(styles.root, className)}>
+            <header className={styles.header}>
+                <Link to="/" className={styles.link}>
                     <ChevronLeftIcon />
-                    <div>Back to Notes</div>
-                </div>
-                <div className={styles.body}>
-                    <input placeholder="Add title..." className={StyleGuide_module.sectionTitle} />
-                    <textarea placeholder="add text..." className={styles.textarea} />
-                </div>
-            </div>
+                    <span>Back to Notes</span>
+                </Link>
+                {onDelete && <TrashIcon className={styles['trash-icon']} onClick={onDelete} />}
+            </header>
+            <input
+                placeholder="Add title..."
+                className={styles['title-input']}
+                value={title}
+                onChange={(e) => onTitleChange(e.target.value)}
+            />
+            <textarea
+                placeholder="Add text..."
+                className={styles['description-textarea']}
+                value={description}
+                onChange={(e) => onDescriptionChange(e.target.value)}
+            />
+            {modifiedAt && (
+                <footer>
+                    {/* TODO: use luxon */}
+                    <span>Edited {modifiedAt.toLocaleString()}</span>
+                </footer>
+            )}
         </article>
     );
 };
