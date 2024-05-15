@@ -1,0 +1,26 @@
+@import '../../styles/common/variables.module.scss';
+.root {
+    padding-top: $size24;
+    padding-right: $size32;
+    padding-left: $size32;
+}
+.searchInput {
+    margin: 0px auto $size2;
+}
+.fakeNote {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: $size4;
+    width: 200px;
+    height: 180px;
+    background-color: $sand1;
+    border-radius: 4px;
+    border: 1px solid $grass1;
+    align-items: center;
+    justify-content: center;
+}
+
+.fakeNote:hover {
+    border: 2px solid $grass4;
+}
