@@ -1,0 +1,19 @@
+@import '../../styles/common/variables.module.scss';
+.root {
+    height: $size32;
+    padding-right: $size12;
+    padding-left: $size12;
+    border-radius: $size4;
+    cursor: pointer;
+    font: $navigation;
+    display: flex;
+    align-items: center;
+}
+
+.primary {
+    color: $sand1;
+    background-color: $grass4;
+    &:hover {
+        background-color: $grass5;
+    }
+}

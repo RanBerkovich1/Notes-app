@@ -1,0 +1,62 @@
+.root {
+    font-size: 12px;
+}
+
+.notes,
+.trash {
+    min-height: 100px;
+    max-height: 300px;
+    overflow: scroll;
+}
+
+.note span {
+    display: inline-block;
+    height: 20px;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.note.disabled span {
+    color: #ccc;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 0 5px;
+}
+
+.addBtn,
+.updateBtn,
+.note.disabled .restoreBtn {
+    color: green;
+}
+
+.delBtn,
+.note.disabled .delBtn {
+    color: red;
+}
+
+span.updateBtn,
+span.restoreBtn {
+    width: 60px;
+}
+
+input {
+    width: 160px;
+    border: 1px solid #666;
+    margin-bottom: 30px;
+}
+
+input::placeholder {
+    color: #bbb;
+}
+
+.disabled {
+    opacity: 1;
+}
