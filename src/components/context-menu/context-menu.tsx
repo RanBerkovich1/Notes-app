@@ -9,29 +9,42 @@ import {
     Item as DropdownMenuItem,
     Separator as DropdownMenuSeparator,
 } from '@radix-ui/react-dropdown-menu';
-import { SEPARATOR } from './content';
+
+export const SEPARATOR = 'separator';
+
+type MenuItem = {
+    text: string;
+    action?: () => void;
+};
 
 export interface ContextMenuProps {
     className?: string;
-    items: string[];
+    items: MenuItem[];
 }
 
 const ContextMenu = ({ className, items }: ContextMenuProps) => {
     const itemsToRender = items.map((item, index) => {
-        if (index !== items.length-1) {
-            if (item === SEPARATOR) {
-                return <DropdownMenuSeparator className={styles.separator} />;
+        if (index !== items.length - 1) {
+            if (item.text === SEPARATOR) {
+                return <DropdownMenuSeparator key={index} className={styles.separator} />;
             } else {
-                return <DropdownMenuItem className={styles.menuItem}>{item}</DropdownMenuItem>;
+                return (
+                    <DropdownMenuItem onClick={item.action} key={item.text} className={styles.menuItem}>
+                        {item.text}
+                    </DropdownMenuItem>
+                );
             }
-        } else { 
+        } else {
             return (
-                <DropdownMenuItem className={cx(styles.menuItem, styles.delete)}>
-                    {item}
+                <DropdownMenuItem
+                    onClick={item.action}
+                    className={cx(styles.menuItem, styles.delete)}
+                    key={item.text}
+                >
+                    {item.text}
                 </DropdownMenuItem>
             );
         }
-        
     });
 
     return (
