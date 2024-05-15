@@ -10,6 +10,7 @@
 .menuItem {
     padding: 8px;
     border-radius: 6px;
+    cursor: pointer;
 
     &:hover {
         background-color: $grass2;
@@ -28,4 +29,10 @@
     height: 1px;
     background-color: lightgray;
     margin: 8px;
+}
+
+.trigger {
+    &:hover {
+        cursor: pointer;
+    }
 }

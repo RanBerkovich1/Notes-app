@@ -1,5 +1,5 @@
 export const SEPARATOR = 'separator';
-export const HOME_MENU_ITEMS = (pinned: boolean) => [
+export const getHomeMenuItems = (pinned: boolean) => [
     'Edit',
     pinned ? 'Unpin Note' : 'Pin Note',
     SEPARATOR,
