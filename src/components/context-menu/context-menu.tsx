@@ -34,8 +34,6 @@ const ContextMenu = ({ className, items }: ContextMenuProps) => {
         
     });
 
-    console.log(items);
-    console.log(itemsToRender);
     return (
         <div className={className}>
             <DropdownMenuRoot>
