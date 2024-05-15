@@ -5,18 +5,15 @@ export class FakeDataService implements StorageService {
 
     constructor(notes: Partial<Note>[]) {
         const date = new Date();
-        notes.forEach((newNote, index) => {
-            const note: Note = {
-                id: (Date.now() + index).toString(),
-                title: `Note ${index}`,
-                description: '',
-                createdAt: date,
-                modifiedAt: date,
-                isPinned: false,
-                ...newNote,
-            };
-            this.notes.push(note);
-        });
+        this.notes = notes.map((newNote, index) => ({
+            id: (Date.now() + index).toString(),
+            title: `Note ${index}`,
+            description: '',
+            createdAt: date,
+            modifiedAt: date,
+            isPinned: false,
+            ...newNote,
+        }));
     }
 
     async getAllNotes(): Promise<Note[]> {
