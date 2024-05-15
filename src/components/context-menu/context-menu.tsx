@@ -1,55 +1,43 @@
 import React from 'react';
-import * as ContextMenu from '@radix-ui/react-context-menu';
-import style from './context-menu.module.scss';
+import styles from './context-menu.module.scss';
+import { DotsVerticalIcon } from '@radix-ui/react-icons';
+import cx from 'classnames';
+import {
+    Root as DropdownMenuRoot,
+    Trigger as DropdownMenuTrigger,
+    Portal as DropdownMenuPortal,
+    Content as DropdownMenuContent,
+    Item as DropdownMenuItem,
+    Separator as DropdownMenuSeparator,
+} from '@radix-ui/react-dropdown-menu';
 
-const ContextMenuDemo = () => {
+const ContextMenu = () => {
     const [bookmarksChecked, setBookmarksChecked] = React.useState(true);
     const [urlsChecked, setUrlsChecked] = React.useState(false);
     const [person, setPerson] = React.useState('pedro');
 
     return (
-        <ContextMenu.Root>
-            <ContextMenu.Trigger className={style.ContextMenuTrigger}>
-                Right-click here.
-            </ContextMenu.Trigger>
-            <ContextMenu.Portal>
-                <ContextMenu.Content className={style.ContextMenuContent}>
-                    <ContextMenu.Item className={style.ContextMenuItem}>
-                        Back <div className={style.RightSlot}>⌘+[</div>
-                    </ContextMenu.Item>
+        <DropdownMenuRoot>
+            <DropdownMenuTrigger>
+                <DotsVerticalIcon />
+            </DropdownMenuTrigger>
 
-                    <ContextMenu.Separator className={style.ContextMenuSeparator} />
+            <DropdownMenuPortal>
+                <DropdownMenuContent className={styles.content}>
+                    <DropdownMenuItem className={styles.menuItem}>Edit</DropdownMenuItem>
+                    <DropdownMenuItem className={styles.menuItem}>Unpin note</DropdownMenuItem>
 
-                    <ContextMenu.CheckboxItem
-                        checked={bookmarksChecked}
-                        onCheckedChange={setBookmarksChecked}
-                        className={style.ContextMenuCheckboxItem}
-                    >
-                        <ContextMenu.ItemIndicator className={style.ContextMenuItemIndicator}>
-                            {'<CheckIcon />'}
-                        </ContextMenu.ItemIndicator>
-                        Show Bookmarks <div className={style.RightSlot}>⌘+B</div>
-                    </ContextMenu.CheckboxItem>
+                    <DropdownMenuSeparator className={styles.separator} />
+                    <DropdownMenuItem className={styles.menuItem}>New note</DropdownMenuItem>
+                    <DropdownMenuItem className={styles.menuItem}>Duplicate</DropdownMenuItem>
 
-                    <ContextMenu.Label className={style.ContextMenuLabel}>People</ContextMenu.Label>
-                    <ContextMenu.RadioGroup value={person} onValueChange={setPerson}>
-                        <ContextMenu.RadioItem value="pedro" className={style.ContextMenuRadioItem}>
-                            <ContextMenu.ItemIndicator className={style.ContextMenuItemIndicator}>
-                                {'<DotFilledIcon />'}
-                            </ContextMenu.ItemIndicator>
-                            Pedro Duarte
-                        </ContextMenu.RadioItem>
-                        <ContextMenu.RadioItem value="colm" className={style.ContextMenuRadioItem}>
-                            <ContextMenu.ItemIndicator className={style.ContextMenuItemIndicator}>
-                                {'<DotFilledIcon />'}
-                            </ContextMenu.ItemIndicator>
-                            Colm Tuite
-                        </ContextMenu.RadioItem>
-                    </ContextMenu.RadioGroup>
-                </ContextMenu.Content>
-            </ContextMenu.Portal>
-        </ContextMenu.Root>
+                    <DropdownMenuSeparator className={styles.separator} />
+                    <DropdownMenuItem className={cx(styles.menuItem, styles.delete)}>Move to trash</DropdownMenuItem>
+
+                </DropdownMenuContent>
+            </DropdownMenuPortal>
+        </DropdownMenuRoot>
     );
 };
 
-export default ContextMenuDemo;
+export default ContextMenu;
