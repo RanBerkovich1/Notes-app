@@ -1,8 +1,8 @@
 import { StateCreator } from 'zustand';
-import { Note, NotesState, StorageService } from './types';
+import { Note, NotesStore, StorageService } from './types';
 
 const createNotesState =
-    (storageService: StorageService): StateCreator<NotesState> =>
+    (storageService: StorageService): StateCreator<NotesStore> =>
     (set) => {
         const syncNotes = async () => {
             const notes = await storageService.getAllNotes();

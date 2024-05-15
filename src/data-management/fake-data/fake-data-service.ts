@@ -1,10 +1,9 @@
 import { Note, StorageService } from '../types';
 
 export class FakeDataService implements StorageService {
-    private notes: Note[];
+    private notes: Note[] = [];
 
     constructor(notes: Partial<Note>[]) {
-        this.notes = [];
         const date = new Date();
         notes.forEach((newNote, index) => {
             const note: Note = {
@@ -47,7 +46,7 @@ export class FakeDataService implements StorageService {
                 isPinned: false,
                 ...newNote,
             };
-            this.notes.push(note);
+            this.notes = [...this.notes, note];
             resolve(note);
         });
     }
@@ -57,14 +56,16 @@ export class FakeDataService implements StorageService {
         updateNote: Partial<Pick<Note, 'title' | 'description' | 'isPinned' | 'deletedAt'>>
     ): Promise<Note> {
         return new Promise((resolve, reject) => {
-            const noteIndex = this.notes.findIndex((note) => note.id === id);
+            const notes = [...this.notes];
+            const noteIndex = notes.findIndex((note) => note.id === id);
             if (noteIndex !== -1) {
                 const modifiedNote = {
                     ...this.notes[noteIndex],
                     ...updateNote,
                     modifiedAt: new Date(),
                 };
-                this.notes[noteIndex] = modifiedNote;
+                notes[noteIndex] = modifiedNote;
+                this.notes = notes;
                 resolve(modifiedNote);
             } else {
                 reject(`No such a note to update. Id: ${id}`);
@@ -74,16 +75,18 @@ export class FakeDataService implements StorageService {
 
     async deleteNote(id: string, permanently = false): Promise<void> {
         return new Promise((resolve, reject) => {
+            let notes = [...this.notes];
             if (permanently) {
-                this.notes = this.notes.filter((item) => item.id !== id);
+                notes = notes.filter((item) => item.id !== id);
             } else {
-                const noteIndex = this.notes.findIndex((note) => note.id === id);
+                const noteIndex = notes.findIndex((note) => note.id === id);
                 if (noteIndex !== -1) {
-                    this.notes[noteIndex].deletedAt = new Date();
+                    notes[noteIndex].deletedAt = new Date();
                 } else {
                     reject(`No such a note to move to trash. Id: ${id}`);
                 }
             }
+            this.notes = notes;
             resolve();
         });
     }

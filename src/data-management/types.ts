@@ -19,7 +19,7 @@ export interface StorageService {
     deleteNote: (id: string, permanently?: boolean) => Promise<void>;
 }
 
-export interface NotesState {
+export interface NotesStore {
     notes: Note[];
     addNote: (newNote: Pick<Note, 'title' | 'description'>) => void;
     updateNote: (
