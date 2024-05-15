@@ -1,5 +1,5 @@
 import { createBoard } from '@wixc3/react-board';
-import ContextMenu, { SEPARATOR } from '../../../components/context-menu/context-menu';
+import ContextMenu, { SEPARATOR } from '../../../components/dropdown-menu/dropdown-menu';
 
 export default createBoard({
     name: 'ContextMenu - Trash Screen',

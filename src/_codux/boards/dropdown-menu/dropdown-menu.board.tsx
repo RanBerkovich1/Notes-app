@@ -1,10 +1,10 @@
 import { createBoard } from '@wixc3/react-board';
-import ContextMenu, { SEPARATOR } from '../../../components/context-menu/context-menu';
+import DropdownMenu, { SEPARATOR } from '../../../components/dropdown-menu/dropdown-menu';
 
 export default createBoard({
     name: 'ContextMenu - Home screen',
     Board: () => (
-        <ContextMenu
+        <DropdownMenu
             items={[
                 { text: 'Edit' },
                 { text: 'Unpin Note' },

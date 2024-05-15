@@ -1,4 +1,4 @@
-import styles from './context-menu.module.scss';
+import styles from './dropdown-menu.module.scss';
 import { DotsVerticalIcon } from '@radix-ui/react-icons';
 import cx from 'classnames';
 import {
@@ -22,14 +22,18 @@ export interface ContextMenuProps {
     items: MenuItem[];
 }
 
-const ContextMenu = ({ className, items }: ContextMenuProps) => {
+const DropdownMenu = ({ className, items }: ContextMenuProps) => {
     const itemsToRender = items.map((item, index) => {
         if (index !== items.length - 1) {
             if (item.text === SEPARATOR) {
                 return <DropdownMenuSeparator key={index} className={styles.separator} />;
             } else {
                 return (
-                    <DropdownMenuItem onClick={item.action} key={item.text} className={styles.menuItem}>
+                    <DropdownMenuItem
+                        onClick={item.action}
+                        key={item.text}
+                        className={styles.menuItem}
+                    >
                         {item.text}
                     </DropdownMenuItem>
                 );
@@ -64,4 +68,4 @@ const ContextMenu = ({ className, items }: ContextMenuProps) => {
     );
 };
 
-export default ContextMenu;
+export default DropdownMenu;
