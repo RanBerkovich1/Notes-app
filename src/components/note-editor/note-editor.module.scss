@@ -1,0 +1,33 @@
+@import '../../styles/common/variables.module.scss';
+.root {
+    padding: $size40;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: $size40;
+    justify-content: space-between;
+}
+.description-textarea {
+    font: $noteText;
+    margin-bottom: $size40;
+    flex-grow: 1;
+}
+.title-input {
+    font: $noteTitle;
+    margin-bottom: $size16;
+}
+.link {
+    display: flex;
+    align-items: center;
+    gap: $size8;
+}
+.trash-icon {
+    width: $size24;
+    height: $size24;
+    cursor: pointer;
+}
