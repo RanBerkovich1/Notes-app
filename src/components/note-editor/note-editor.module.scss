@@ -1,6 +1,6 @@
 @import '../../styles/common/variables.module.scss';
 .root {
-    padding: 40px;
+    padding: $size40;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -9,25 +9,25 @@
 .header {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+    margin-bottom: $size40;
     justify-content: space-between;
 }
 .description-textarea {
     font: $noteText;
-    margin-bottom: 40px;
+    margin-bottom: $size40;
     flex-grow: 1;
 }
 .title-input {
     font: $noteTitle;
-    margin-bottom: 16px;
+    margin-bottom: $size16;
 }
 .link {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: $size8;
 }
 .trash-icon {
-    width: 24px;
-    height: 24px;
+    width: $size24;
+    height: $size24;
     cursor: pointer;
 }
