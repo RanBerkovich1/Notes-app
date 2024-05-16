@@ -1,0 +1,10 @@
+@import '../../styles/common/variables.module.scss';
+
+.root {
+    padding-top: $size24;
+    padding-right: $size32;
+    padding-left: $size32;
+}
+.searchInput {
+    margin: 0px auto $size2;
+}
