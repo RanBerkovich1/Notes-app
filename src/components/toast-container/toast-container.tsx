@@ -3,7 +3,7 @@ import { Toast } from '../toast/toast';
 import { useToastStore } from './toast-store';
 
 export const ToastContainer = () => {
-    const { toasts, removeToast } = useToastStore();
+    const { toasts, closeToast } = useToastStore();
 
     return (
         <>
@@ -14,7 +14,7 @@ export const ToastContainer = () => {
                         if (!open) {
                             // Delay for exit animation.
                             setTimeout(() => {
-                                removeToast(id);
+                                closeToast(id);
                             }, 100);
                         }
                     }}

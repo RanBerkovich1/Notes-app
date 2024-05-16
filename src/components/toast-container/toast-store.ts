@@ -12,7 +12,7 @@ interface Toast extends ToastData {
 interface ToastStore {
     toasts: Toast[];
     openToast: (toastData: ToastData) => void;
-    removeToast: (toastId: string) => void;
+    closeToast: (toastId: string) => void;
 }
 
 export const useToastStore = create<ToastStore>((set) => ({
@@ -24,7 +24,7 @@ export const useToastStore = create<ToastStore>((set) => ({
         };
         set((state) => ({ toasts: [...state.toasts, newToast] }));
     },
-    removeToast: (toastId: string) => {
+    closeToast: (toastId: string) => {
         set((state) => ({ toasts: state.toasts.filter((toast) => toast.id !== toastId) }));
     },
 }));
