@@ -1,4 +1,4 @@
-import styles from './dropdown-menu.module.scss';
+import React, { ReactNode } from 'react';
 import { DotsVerticalIcon } from '@radix-ui/react-icons';
 import cx from 'classnames';
 import {
@@ -6,51 +6,17 @@ import {
     Trigger as DropdownMenuTrigger,
     Portal as DropdownMenuPortal,
     Content as DropdownMenuContent,
-    Item as DropdownMenuItem,
-    Separator as DropdownMenuSeparator,
+    Item as RadixDropdownMenuItem,
+    Separator as RadixDropdownMenuSeparator,
 } from '@radix-ui/react-dropdown-menu';
+import styles from './dropdown-menu.module.scss';
 
-export const SEPARATOR = 'separator';
-
-type MenuItem = {
-    text: string;
-    action?: () => void;
-};
-
-export interface ContextMenuProps {
+export interface DropdownMenuProps {
     className?: string;
-    items: MenuItem[];
+    children: ReactNode;
 }
 
-const DropdownMenu = ({ className, items }: ContextMenuProps) => {
-    const itemsToRender = items.map((item, index) => {
-        if (index !== items.length - 1) {
-            if (item.text === SEPARATOR) {
-                return <DropdownMenuSeparator key={index} className={styles.separator} />;
-            } else {
-                return (
-                    <DropdownMenuItem
-                        onClick={item.action}
-                        key={item.text}
-                        className={styles.menuItem}
-                    >
-                        {item.text}
-                    </DropdownMenuItem>
-                );
-            }
-        } else {
-            return (
-                <DropdownMenuItem
-                    onClick={item.action}
-                    className={cx(styles.menuItem, styles.delete)}
-                    key={item.text}
-                >
-                    {item.text}
-                </DropdownMenuItem>
-            );
-        }
-    });
-
+export const DropdownMenu = ({ className, children }: DropdownMenuProps) => {
     return (
         <div className={className}>
             <DropdownMenuRoot>
@@ -59,13 +25,29 @@ const DropdownMenu = ({ className, items }: ContextMenuProps) => {
                 </DropdownMenuTrigger>
 
                 <DropdownMenuPortal>
-                    <DropdownMenuContent className={styles.content}>
-                        {itemsToRender}
-                    </DropdownMenuContent>
+                    <DropdownMenuContent className={styles.content}>{children}</DropdownMenuContent>
                 </DropdownMenuPortal>
             </DropdownMenuRoot>
         </div>
     );
 };
 
-export default DropdownMenu;
+interface DropdownMenuItemProps {
+    text: string;
+    action?: () => void;
+    className?: string;
+}
+
+export const DropdownMenuItem = ({ text, action, className }: DropdownMenuItemProps) => (
+    <RadixDropdownMenuItem onClick={action} className={cx(styles.menuItem, className)}>
+        {text}
+    </RadixDropdownMenuItem>
+);
+
+interface DropdownMenuSeparatorProps {
+    className?: string;
+}
+
+export const DropdownMenuSeparator = ({ className }: DropdownMenuSeparatorProps) => (
+    <RadixDropdownMenuSeparator className={cx(styles.separator, className)} />
+);
