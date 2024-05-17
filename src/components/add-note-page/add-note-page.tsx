@@ -1,14 +1,23 @@
 import classNames from 'classnames';
 import styles from './add-note-page.module.scss';
+import { useEffect, useState } from 'react';
+import { useNotesStore } from '../../data-management/use-notes-store';
+import { NotePage } from '../note-page/note-page';
+import type { Note } from '../../data-management/types';
 
-export interface AddNotePageProps {
-    className?: string;
-}
+export const AddNotePage = () => {
+    const { addNote } = useNotesStore();
+    const [note, setNote] = useState<Note>();
 
-/**
- * This component was created using Codux's Default new component template.
- * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
- */
-export const AddNotePage = ({ className }: AddNotePageProps) => {
-    return <div className={classNames(styles.root, className)}>AddNotePage</div>;
+    useEffect(() => {
+        const create = async () => {
+            const note = await addNote({ title: '', description: '' });
+            setNote(note);
+        };
+        void create();
+    }, [addNote]);
+
+    if (!note) return null;
+
+    return <NotePage note={note} />;
 };

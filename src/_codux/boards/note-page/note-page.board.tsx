@@ -4,7 +4,6 @@ import { FakeRouter } from '../../board-wrappers/fake-router';
 import { FakeDataService } from '../../../data-management/fake-data/fake-data-service';
 import { StoreContextProvider } from '../../../data-management/store-context-provider';
 import type { Note } from '../../../data-management/types';
-import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 
 const notes: Note[] = [
     {
@@ -21,21 +20,17 @@ export default createBoard({
     name: 'NotePage',
     Board: () => {
         const storageService = new FakeDataService(notes);
-        const router = createMemoryRouter(
-            [
-                {
-                    path: '/notes/:noteId',
-                    element: (
-                        <StoreContextProvider value={storageService}>
-                            <NotePage />
-                        </StoreContextProvider>
-                    ),
-                },
-            ],
-            { initialEntries: ['/notes/1'] },
+        return (
+            <FakeRouter>
+                <StoreContextProvider value={storageService}>
+                    <NotePage note={notes[0]} />
+                </StoreContextProvider>
+            </FakeRouter>
         );
-
-        return <RouterProvider router={router} />;
     },
-    isSnippet: true,
+    isSnippet: false,
+    environmentProps: {
+        canvasWidth: 700,
+        canvasHeight: 500,
+    },
 });
