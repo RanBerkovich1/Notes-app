@@ -33,7 +33,7 @@ const notes = [
 ];
 
 export default createBoard({
-    name: 'Trash ',
+    name: 'Trash',
     Board: () => {
         const storageService = new FakeDataService(notes);
 
