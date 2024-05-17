@@ -10,10 +10,9 @@ const AUTO_SAVE_TIMEOUT = 1000;
 
 export interface NotePageProps {
     note: Note;
-    className?: string;
 }
 
-export const NotePage = ({ note, className }: NotePageProps) => {
+export const NotePage = ({ note }: NotePageProps) => {
     const { updateNote } = useNotesStore();
 
     const [title, setTitle] = useState(note.title);
@@ -25,7 +24,7 @@ export const NotePage = ({ note, className }: NotePageProps) => {
     const saveChanges = async () => {
         const savedNote = await updateNote(note.id, { title, description });
         setModifiedAt(savedNote.modifiedAt);
-    }
+    };
 
     const scheduleAutoSave = () => {
         if (saveTimeoutRef.current) {
@@ -49,15 +48,13 @@ export const NotePage = ({ note, className }: NotePageProps) => {
     };
 
     return (
-        <div className={classNames(styles.root, className)}>
-            <NoteEditor
-                title={title}
-                onTitleChange={handleTitleChange}
-                description={description}
-                onDescriptionChange={handleDescriptionChange}
-                onDelete={() => {}} // TODO
-                modifiedAt={modifiedAt}
-            />
-        </div>
+        <NoteEditor
+            title={title}
+            onTitleChange={handleTitleChange}
+            description={description}
+            onDescriptionChange={handleDescriptionChange}
+            onDelete={() => {}} // TODO
+            modifiedAt={modifiedAt}
+        />
     );
 };
