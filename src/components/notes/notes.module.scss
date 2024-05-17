@@ -2,9 +2,14 @@
 
 .root {
     padding-top: $size24;
-    padding-right: $size32;
-    padding-left: $size32;
+    display: flex;
+    flex-direction: column;
+    gap: $size8;
 }
 .searchInput {
-    margin: 0px auto $size2;
+    align-self: center;
+}
+.notes {
+    padding-right: $size24;
+    padding-left: $size24;
 }
