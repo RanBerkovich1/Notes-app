@@ -7,6 +7,7 @@ import { useNotesStore } from '../../data-management/use-notes-store';
 import { AddNoteCard } from '../add-note-card/add-note-card';
 import { groupNotesByTimePeriod } from './group-notes-by-period';
 import { FakeNote } from './fake-note/fake-note';
+import { ScrollArea } from '../scroll-area/scroll-area';
 
 export interface NotesProps {
     className?: string;
@@ -28,7 +29,7 @@ export const Notes = ({ className }: NotesProps) => {
 
     const pinnedNotes = useMemo(
         () => relevantNotes.filter((note) => note.isPinned),
-        [relevantNotes]
+        [relevantNotes],
     );
 
     const noteGroups = useMemo(() => groupNotesByTimePeriod(relevantNotes), [relevantNotes]);
@@ -42,30 +43,34 @@ export const Notes = ({ className }: NotesProps) => {
                 placeholder="Search all notes"
                 className={styles.searchInput}
             />
-            {pinnedNotes.length > 0 && (
-                <Section title="Pinned">
-                    {pinnedNotes.map((note) => (
-                        <FakeNote note={note} key={note.id} />
-                    ))}
-                </Section>
-            )}
-            {(todaysNotes || !searchString) && (
-                <Section title="Today">
-                    {!searchString && <AddNoteCard />}
-                    {todaysNotes?.notes.map((note) => (
-                        <FakeNote note={note} key={note.id} />
-                    ))}
-                </Section>
-            )}
-            {noteGroups
-                .filter((group) => group.id !== 'today')
-                .map(({ title: period, notes }) => (
-                    <Section title={period} key={period}>
-                        {notes.map((note) => (
-                            <FakeNote note={note} key={note.id} />
+            <ScrollArea>
+                <div className={styles.notes}>
+                    {pinnedNotes.length > 0 && (
+                        <Section title="Pinned">
+                            {pinnedNotes.map((note) => (
+                                <FakeNote note={note} key={note.id} />
+                            ))}
+                        </Section>
+                    )}
+                    {(todaysNotes || !searchString) && (
+                        <Section title="Today">
+                            {!searchString && <AddNoteCard />}
+                            {todaysNotes?.notes.map((note) => (
+                                <FakeNote note={note} key={note.id} />
+                            ))}
+                        </Section>
+                    )}
+                    {noteGroups
+                        .filter((group) => group.id !== 'today')
+                        .map(({ title: period, notes }) => (
+                            <Section title={period} key={period}>
+                                {notes.map((note) => (
+                                    <FakeNote note={note} key={note.id} />
+                                ))}
+                            </Section>
                         ))}
-                    </Section>
-                ))}
+                </div>
+            </ScrollArea>
         </div>
     );
 };
