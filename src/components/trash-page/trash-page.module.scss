@@ -1,0 +1,22 @@
+@import '../../styles/common/variables.module.scss';
+
+.root {
+    padding: $size24 $size32;
+}
+.title {
+    font-family: 'Wix Madefor Display', sans-serif;
+    font-weight: 700;
+    color: $grassdark;
+    padding: $size8;
+    margin-bottom: $size16;
+    border-bottom: 1px solid $sand3;
+}
+.notes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $size16;
+    padding: $size16 0px;
+}
+.searchInput {
+    margin: 0px auto $size2;
+}
