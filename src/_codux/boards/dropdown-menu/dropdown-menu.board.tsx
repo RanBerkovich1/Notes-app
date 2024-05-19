@@ -4,12 +4,24 @@ import { StoreContextProvider } from '../../../data-management/store-context-pro
 import { FakeDataService } from '../../../data-management/fake-data/fake-data-service';
 
 export default createBoard({
-    name: 'ContextMenu - Home screen',
+    name: 'Dropdown menu - Home screen',
     Board: () => {
-        const storageService = new FakeDataService([]);
+        const notes = [
+            {
+                title: 'Todo',
+                description: 'kid, shopping, swimming',
+                id: '1',
+            },
+        ];
+        const storageService = new FakeDataService(notes);
         return (
             <StoreContextProvider value={storageService}>
-                <HomeDropdownMenu isPinned={false} id={'1'} description={''} title={''} />
+                <HomeDropdownMenu
+                    isPinned={false}
+                    id={'1'}
+                    description={'kid, shopping, swimming'}
+                    title={'Todo'}
+                />
             </StoreContextProvider>
         );
     },

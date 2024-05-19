@@ -3,13 +3,14 @@ import { DropdownMenu, DropdownMenuItem, DropdownMenuSeparator } from './dropdow
 import styles from './dropdown-menu.module.scss';
 import { useNotesStore } from '../../data-management/use-notes-store';
 
-export const TrashDropdownMenu = ({
-    id,
-    isPinned,
-}: Omit<Note, 'createdAt' | 'modifiedAt' | 'title' | 'description'>) => {
+interface TrashDropdownMenuProps {
+    id: string;
+}
+
+export const TrashDropdownMenu = ({ id }: TrashDropdownMenuProps) => {
     const { restoreNote, deleteNote } = useNotesStore();
 
-    const hanldeRestore = () => {
+    const handleRestore = () => {
         restoreNote(id);
     };
 
@@ -19,11 +20,11 @@ export const TrashDropdownMenu = ({
 
     return (
         <DropdownMenu>
-            <DropdownMenuItem text="Move back to notes" action={hanldeRestore} />
+            <DropdownMenuItem text="Move back to notes" action={handleRestore} />
             <DropdownMenuSeparator />
             <DropdownMenuItem
                 text="Delete permanently"
-                action={() => handleDelete}
+                action={handleDelete}
                 className={styles.delete}
             />
         </DropdownMenu>

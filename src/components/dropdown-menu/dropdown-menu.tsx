@@ -12,23 +12,20 @@ import {
 import styles from './dropdown-menu.module.scss';
 
 export interface DropdownMenuProps {
-    className?: string;
     children: ReactNode;
 }
 
-export const DropdownMenu = ({ className, children }: DropdownMenuProps) => {
+export const DropdownMenu = ({ children }: DropdownMenuProps) => {
     return (
-        <div className={className}>
-            <DropdownMenuRoot>
-                <DropdownMenuTrigger className={styles.trigger}>
-                    <DotsVerticalIcon />
-                </DropdownMenuTrigger>
+        <DropdownMenuRoot>
+            <DropdownMenuTrigger className={styles.trigger}>
+                <DotsVerticalIcon />
+            </DropdownMenuTrigger>
 
-                <DropdownMenuPortal>
-                    <DropdownMenuContent className={styles.content}>{children}</DropdownMenuContent>
-                </DropdownMenuPortal>
-            </DropdownMenuRoot>
-        </div>
+            <DropdownMenuPortal>
+                <DropdownMenuContent className={styles.content}>{children}</DropdownMenuContent>
+            </DropdownMenuPortal>
+        </DropdownMenuRoot>
     );
 };
 

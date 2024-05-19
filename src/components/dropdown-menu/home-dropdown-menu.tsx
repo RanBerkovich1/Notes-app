@@ -41,7 +41,7 @@ export const HomeDropdownMenu = ({ id, isPinned, title, description }: Omit<Note
             <DropdownMenuItem text="New Note" action={handleNewNote} />
             <DropdownMenuItem text="Duplicate" action={handleDuplicateNote} />
             <DropdownMenuSeparator />
-            <DropdownMenuItem text="Delete" action={() => handleDelete} className={styles.delete} />
+            <DropdownMenuItem text="Delete" action={handleDelete} className={styles.delete} />
         </DropdownMenu>
     );
 };
