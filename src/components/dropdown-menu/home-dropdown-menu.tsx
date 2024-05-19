@@ -3,7 +3,12 @@ import { DropdownMenu, DropdownMenuItem, DropdownMenuSeparator } from './dropdow
 import styles from './dropdown-menu.module.scss';
 import { useNotesStore } from '../../data-management/use-notes-store';
 
-export const HomeDropdownMenu = ({ id, isPinned, title, description }: Omit<Note, 'createdAt' | 'modifiedAt'>) => {
+export const HomeDropdownMenu = ({
+    id,
+    isPinned,
+    title,
+    description,
+}: Omit<Note, 'createdAt' | 'modifiedAt'>) => {
     const { addNote, updateNote, deleteNote, syncNotes, pinNote, unPinNote } = useNotesStore();
 
     const handlePinNote = () => {
@@ -22,23 +27,18 @@ export const HomeDropdownMenu = ({ id, isPinned, title, description }: Omit<Note
         deleteNote(id);
     };
 
-    const handleNewNote = () => {
-        // TODO
-    }
-
     const handleEdit = () => {
         // TODO
-    }
+    };
 
     return (
         <DropdownMenu>
-            <DropdownMenuItem text="Edit" action={handleNewNote} />
+            <DropdownMenuItem text="Edit" action={handleEdit} />
             <DropdownMenuItem
                 text={isPinned ? 'Unpin Note' : 'Unpin'}
                 action={isPinned ? handleUnpinNote : handlePinNote}
             />
             <DropdownMenuSeparator />
-            <DropdownMenuItem text="New Note" action={handleNewNote} />
             <DropdownMenuItem text="Duplicate" action={handleDuplicateNote} />
             <DropdownMenuSeparator />
             <DropdownMenuItem text="Delete" action={handleDelete} className={styles.delete} />
