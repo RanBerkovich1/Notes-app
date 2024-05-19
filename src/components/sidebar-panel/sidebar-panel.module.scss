@@ -1,19 +1,76 @@
+@import '../../styles/common/variables.module.scss';
 .root {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding-left: 3em;
-    justify-content: space-between;
     padding-right: 3.5em;
     align-items: center;
-    height: 4em;
-
+    height: auto;
 }
 
 .menu {
     display: flex;
-    column-gap: 2rem;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 4px;
+    gap: 4px;
 }
 
 .active {
     font-weight: 600;
+}
+.left-panel {
+    align-items: start;
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    width: 244px;
+    gap: 20px;
+    background-color: $sand2;
+    border-right: 1px solid $sand3;
+}
+.logo {
+    font-size: 20px;
+}
+.test {
+}
+.nav-item {
+    font: $navigation;
+    padding: 8px;
+    width: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    &:hover {
+        background-color: $grass3;
+    }
+    border-radius: 4px;
+    &:active {
+        background-color: $grass3;
+    }
+}
+.top-area {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.nav-btn {
+    min-width: 16px;
+}
+.plus {
+    min-width: 16px;
+    min-height: 16px;
+    background-color: #d53737;
+}
+.notesSVG {
+    width: 15px;
+    align-self: center;
+    height: 22px;
+    display: flex;
+    align-content: end;
+    justify-content: end;
+    align-items: center;
+}
+.nav-item-txt {
 }
