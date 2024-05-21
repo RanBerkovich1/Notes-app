@@ -1,10 +1,7 @@
 import { createBoard } from '@wixc3/react-board';
-import { EditNotePage } from '../../../components/edit-note-page/edit-note-page';
-import { FakeRouter } from '../../board-wrappers/fake-router';
-import { StoreContextProvider } from '../../../data-management/store-context-provider';
-import { FakeDataService } from '../../../data-management/fake-data/fake-data-service';
 import type { Note } from '../../../data-management/types';
-import { Navigate, RouterProvider, createMemoryRouter } from 'react-router-dom';
+import { PageWrapper } from '../../board-wrappers/page-wrapper';
+import { EditNotePage } from '../../../components/edit-note-page/edit-note-page';
 
 const notes: Note[] = [
     {
@@ -20,30 +17,12 @@ const notes: Note[] = [
 export default createBoard({
     name: 'EditNotePage',
     Board: () => {
-        const storageService = new FakeDataService(notes);
-        const router = createMemoryRouter(
-            [
-                {
-                    path: '/notes/:noteId',
-                    element: (
-                        <StoreContextProvider value={storageService}>
-                            <EditNotePage />
-                        </StoreContextProvider>
-                    ),
-                },
-                {
-                    path: '*',
-                    element: <Navigate to="/notes/1" />,
-                },
-            ],
-            { initialEntries: ['/notes/1'] },
+        return (
+            <PageWrapper path="/notes/1" routePath="/notes/:noteId" notes={notes}>
+                <EditNotePage />
+            </PageWrapper>
         );
-
-        return <RouterProvider router={router} />;
     },
     isSnippet: false,
-    environmentProps: {
-        canvasWidth: 700,
-        canvasHeight: 500,
-    },
+    environmentProps: { canvasWidth: 1024, canvasHeight: 640 },
 });

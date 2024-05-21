@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-import styles from './edit-note-page.module.scss';
 import { useNotesStore } from '../../data-management/use-notes-store';
 import { useEffect, useState } from 'react';
 import type { Note } from '../../data-management/types';

@@ -1,10 +1,10 @@
-import classNames from 'classnames';
-import styles from './note-page.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { NoteEditor } from '../note-editor/note-editor';
-import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useNotesStore } from '../../data-management/use-notes-store';
 import type { Note } from '../../data-management/types';
+import { useToastStore } from '../../components/toast-container/toast-store';
+import { Button } from '../../components/button/button';
 
 const AUTO_SAVE_TIMEOUT = 1000;
 
@@ -13,7 +13,10 @@ export interface NotePageProps {
 }
 
 export const NotePage = ({ note }: NotePageProps) => {
-    const { updateNote } = useNotesStore();
+    const navigate = useNavigate();
+
+    const { updateNote, deleteNote, restoreNote } = useNotesStore();
+    const { openToast } = useToastStore();
 
     const [title, setTitle] = useState(note.title);
     const [description, setDescription] = useState(note.description);
@@ -47,13 +50,32 @@ export const NotePage = ({ note }: NotePageProps) => {
         scheduleAutoSave();
     };
 
+    const handleDelete = async () => {
+        await deleteNote(note.id);
+        openToast({
+            title: 'Note moved to Trash',
+            description: `It didn't delete permanently`,
+            action: (
+                <Button
+                    onClick={() => {
+                        restoreNote(note.id);
+                        // TODO: another toast notification?
+                    }}
+                >
+                    Undo
+                </Button>
+            ),
+        });
+        navigate('/');
+    };
+
     return (
         <NoteEditor
             title={title}
             onTitleChange={handleTitleChange}
             description={description}
             onDescriptionChange={handleDescriptionChange}
-            onDelete={() => {}} // TODO
+            onDelete={handleDelete}
             modifiedAt={modifiedAt}
         />
     );

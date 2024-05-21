@@ -1,24 +1,19 @@
 import { createBoard } from '@wixc3/react-board';
 import { AddNotePage } from '../../../components/add-note-page/add-note-page';
-import { FakeDataService } from '../../../data-management/fake-data/fake-data-service';
-import { FakeRouter } from '../../board-wrappers/fake-router';
-import { StoreContextProvider } from '../../../data-management/store-context-provider';
+import { PageWrapper } from '../../board-wrappers/page-wrapper';
 
 export default createBoard({
     name: 'AddNotePage',
     Board: () => {
-        const storageService = new FakeDataService([]);
         return (
-            <FakeRouter>
-                <StoreContextProvider value={storageService}>
-                    <AddNotePage />
-                </StoreContextProvider>
-            </FakeRouter>
+            <PageWrapper>
+                <AddNotePage />
+            </PageWrapper>
         );
     },
     isSnippet: false,
     environmentProps: {
-        canvasHeight: 500,
-        canvasWidth: 700,
+        canvasHeight: 640,
+        canvasWidth: 1024,
     },
 });

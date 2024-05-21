@@ -1,9 +1,7 @@
 import { createBoard } from '@wixc3/react-board';
 import { NotePage } from '../../../components/note-page/note-page';
-import { FakeRouter } from '../../board-wrappers/fake-router';
-import { FakeDataService } from '../../../data-management/fake-data/fake-data-service';
-import { StoreContextProvider } from '../../../data-management/store-context-provider';
 import type { Note } from '../../../data-management/types';
+import { PageWrapper } from '../../board-wrappers/page-wrapper';
 
 const notes: Note[] = [
     {
@@ -19,18 +17,12 @@ const notes: Note[] = [
 export default createBoard({
     name: 'NotePage',
     Board: () => {
-        const storageService = new FakeDataService(notes);
         return (
-            <FakeRouter>
-                <StoreContextProvider value={storageService}>
-                    <NotePage note={notes[0]} />
-                </StoreContextProvider>
-            </FakeRouter>
+            <PageWrapper notes={notes}>
+                <NotePage note={notes[0]} />
+            </PageWrapper>
         );
     },
     isSnippet: false,
-    environmentProps: {
-        canvasWidth: 700,
-        canvasHeight: 500,
-    },
+    environmentProps: { canvasWidth: 1024, canvasHeight: 640 },
 });

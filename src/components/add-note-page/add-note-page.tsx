@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-import styles from './add-note-page.module.scss';
 import { useEffect, useState } from 'react';
 import { useNotesStore } from '../../data-management/use-notes-store';
 import { NotePage } from '../note-page/note-page';
