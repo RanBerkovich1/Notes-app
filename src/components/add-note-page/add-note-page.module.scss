@@ -1,31 +1,28 @@
 @import '../../styles/common/variables.module.scss';
-.root {
-}
+
+.root {}
+
 .noteCard {
     height: 180px;
     width: 200px;
     padding: 12px 12px 0px;
     color: $grassdark;
     background-color: $sand1;
+
     &:hover {
         border: 2px solid $grass4;
         border-radius: 4px;
     }
+
     border: 2px solid $sand1;
     overflow: hidden;
 }
+
 .icon {
     width: 24px;
     height: 24px;
 }
-.noteIcon {
-    position: absolute;
-    top: 8px;
-    width: 24px;
-    height: 16px;
-    left: 149px;
-    display: flex;
-}
+
 .cardIcon {
     position: absolute;
     left: 163px;
@@ -33,5 +30,6 @@
 }
 
 .noteCard:hover .cardIcon {
-    display: block; /* The icon displays as a block when the note card is hovered */
+    display: block;
+    /* The icon displays as a block when the note card is hovered */
 }
