@@ -1,0 +1,40 @@
+@import '../../styles/common/variables.module.scss';
+.root {
+}
+.noteCard {
+    height: 182px;
+    width: 200px;
+    padding: 12px 12px 0px;
+    color: $grassdark;
+    background-color: $sand1;
+    border-radius: 4px;
+    &:hover {
+        border: 2px solid $grass4;
+    }
+    border: 2px solid $sand1;
+    overflow: hidden;
+}
+.icon {
+    width: 24px;
+    height: 24px;
+}
+.noteIcon {
+    position: absolute;
+    top: 8px;
+    width: 24px;
+    height: 16px;
+    left: 149px;
+    display: flex;
+}
+.cardIcon {
+    position: absolute;
+    left: 163px;
+    display: none;
+}
+
+.noteCard:hover .cardIcon {
+    display: block; /* The icon displays as a block when the note card is hovered */
+}
+.title {
+    margin: 0px;
+}
