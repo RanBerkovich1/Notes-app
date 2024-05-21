@@ -1,0 +1,31 @@
+@import '../../styles/common/variables.module.scss';
+
+.input {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 4px;
+    padding-left: 4px;
+    font-size: 14px;
+    line-height: 20px;
+    width: 100%;
+}
+
+.input::placeholder {
+    color: $sand3;
+}
+
+.root {
+    background: $sand1;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    border-radius: $size4;
+    width: 250px;
+}
+.icon {
+    width: 16px;
+    height: 16px;
+    margin: 4px;
+    color: $grassdark;
+    flex-shrink: 0;
+}

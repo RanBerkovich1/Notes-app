@@ -1,0 +1,15 @@
+@import '../../styles/common/variables.module.scss';
+.root {
+    width: 200px;
+    height: 180px;
+    border-radius: $size4;
+    border: 2px solid $sand3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
