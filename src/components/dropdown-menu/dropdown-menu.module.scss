@@ -1,0 +1,40 @@
+@import '../../styles/common/variables.module.scss';
+
+.content {
+    background-color: white;
+    border-radius: 6px;
+    padding: 8px;
+    width: calc(100% + 20px);
+    border: 1px solid $grass1;
+    box-shadow:
+        0px 12px 60px 0px #0000000e,
+        0px 12px 32px -16px #0000301b;
+}
+
+.menuItem {
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $grass2;
+    }
+}
+
+.delete {
+    color: $danger11;
+
+    &:hover {
+        background-color: $danger4;
+    }
+}
+
+.separator {
+    height: 1px;
+    background-color: lightgray;
+    margin: 8px;
+}
+
+.trigger {
+    cursor: pointer;
+}
