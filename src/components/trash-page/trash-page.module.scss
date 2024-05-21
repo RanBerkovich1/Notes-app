@@ -3,12 +3,17 @@
 .root {
     padding: $size24 $size32;
 }
+
 .notes-list {
     display: flex;
     flex-wrap: wrap;
     gap: $size16;
-    height: 600px;
 }
+
 .searchInput {
     margin: 0px auto $size2;
+}
+.scrollable-area {
+    width: 100%;
+    height: 100vh;
 }

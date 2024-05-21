@@ -11,6 +11,7 @@ import {
     Scrollbar as ScrollAreaScrollbar,
     Thumb as ScrollAreaThumb,
 } from '@radix-ui/react-scroll-area';
+import { ScrollArea } from '../scroll-area/scroll-area';
 
 export interface TrashPageProps {
     className?: string;
@@ -40,18 +41,13 @@ export const TrashPage = ({ className }: TrashPageProps) => {
                 onChange={setSearchString}
             />
             <Section title="Trash">
-                <ScrollAreaRoot>
-                    <ScrollAreaViewport>
-                        <div className={styles['notes-list']}>
-                            {relevantNotes.map((note) => (
-                                <FakeNote note={note} key={note.id} />
-                            ))}
-                        </div>
-                    </ScrollAreaViewport>
-                    <ScrollAreaScrollbar orientation="vertical">
-                        <ScrollAreaThumb />
-                    </ScrollAreaScrollbar>
-                </ScrollAreaRoot>
+                <ScrollArea className={styles['scrollable-area']}>
+                    <div className={styles['notes-list']}>
+                        {relevantNotes.map((note) => (
+                            <FakeNote note={note} key={note.id} />
+                        ))}
+                    </div>
+                </ScrollArea>
             </Section>
         </div>
     );
