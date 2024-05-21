@@ -5,6 +5,7 @@ import { StoreContextProvider } from '../../../data-management/store-context-pro
 import { DateTime } from 'luxon';
 import { Note } from '../../../data-management/types';
 import { FakeRouter } from '../../board-wrappers/fake-router';
+import Notes_board_module from './notes.board.module.scss';
 
 const notes: Note[] = [
     {
@@ -65,7 +66,7 @@ export default createBoard({
         return (
             <FakeRouter>
                 <StoreContextProvider value={storageService}>
-                    <Notes />
+                    <Notes className={Notes_board_module.notes} />
                 </StoreContextProvider>
             </FakeRouter>
         );
@@ -73,8 +74,8 @@ export default createBoard({
     isSnippet: true,
     environmentProps: {
         canvasWidth: 1052,
-        canvasHeight: 679,
-        windowHeight: 688,
+        canvasHeight: 503,
+        windowHeight: 503,
         windowBackgroundColor: '#ebebe9',
     },
 });
