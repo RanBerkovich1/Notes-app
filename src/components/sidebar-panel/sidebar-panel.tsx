@@ -47,7 +47,7 @@ export const SidebarPanel = ({ className }: HeaderProps) => {
                     Notes
                 </NavLink>
                 <NavLink
-                    to="/deleted"
+                    to="/trash"
                     className={classNames(
                         ({ isActive }: { isActive: boolean }) =>
                             classNames({ [styles.active]: isActive }),
