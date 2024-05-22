@@ -6,7 +6,6 @@ import styles from './notes.module.scss';
 import { useNotesStore } from '../../data-management/use-notes-store';
 import { AddNoteCard } from '../add-note-card/add-note-card';
 import { groupNotesByTimePeriod } from './group-notes-by-period';
-import { FakeNote } from './fake-note/fake-note';
 import { ScrollArea } from '../scroll-area/scroll-area';
 import { Link } from 'react-router-dom';
 import { Note } from '../note/note';
@@ -50,7 +49,7 @@ export const Notes = ({ className }: NotesProps) => {
                     {pinnedNotes.length > 0 && (
                         <Section title="Pinned">
                             {pinnedNotes.map((note) => (
-                                <FakeNote note={note} key={note.id} />
+                                <Note key={note.id} {...note} />
                             ))}
                         </Section>
                     )}
@@ -63,10 +62,7 @@ export const Notes = ({ className }: NotesProps) => {
                                 </Link>
                             )}
                             {todaysNotes?.notes.map((note) => (
-                                <Link to={`/notes/${note.id}`}>
-                                    {' '}
-                                    <Note key={note.id} {...note} />
-                                </Link>
+                                <Note key={note.id} {...note} />
                             ))}
                         </Section>
                     )}
@@ -75,7 +71,7 @@ export const Notes = ({ className }: NotesProps) => {
                         .map(({ title: period, notes }) => (
                             <Section title={period} key={period}>
                                 {notes.map((note) => (
-                                    <FakeNote note={note} key={note.id} />
+                                    <Note key={note.id} {...note} />
                                 ))}
                             </Section>
                         ))}

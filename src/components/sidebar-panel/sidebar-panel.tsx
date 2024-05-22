@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import styles from './sidebar-panel.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Button } from '../button/button';
-import PlusSvg from '../../assets/plus.svg';
+import PlusSvg from '../../assets/plus.svg?react';
 
 export interface HeaderProps {
     className?: string;

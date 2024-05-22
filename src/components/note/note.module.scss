@@ -19,15 +19,18 @@
 
 .cardIcon {
     position: absolute;
-    display: none;
+    visibility: hidden;
     right: 10px;
 }
 
 .noteCard:hover .cardIcon {
-    display: block;
-    /* The icon displays as a block when the note card is hovered */
+    visibility: visible;
 }
 
 .title {
     margin: 0px;
+}
+.link {
+    width: 100%;
+    height: 100%;
 }

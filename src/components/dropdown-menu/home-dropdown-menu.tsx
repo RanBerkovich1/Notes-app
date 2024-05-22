@@ -2,6 +2,7 @@ import type { Note } from '../../data-management/types';
 import { DropdownMenu, DropdownMenuItem, DropdownMenuSeparator } from './dropdown-menu';
 import styles from './dropdown-menu.module.scss';
 import { useNotesStore } from '../../data-management/use-notes-store';
+import { Link } from 'react-router-dom';
 
 export const HomeDropdownMenu = ({
     id,
@@ -27,15 +28,13 @@ export const HomeDropdownMenu = ({
         deleteNote(id);
     };
 
-    const handleEdit = () => {
-        // TODO
-    };
-
     return (
         <DropdownMenu>
-            <DropdownMenuItem text="Edit" action={handleEdit} />
+            <Link to={`/notes/${id}`}>
+                <DropdownMenuItem text="Edit" />
+            </Link>
             <DropdownMenuItem
-                text={isPinned ? 'Unpin Note' : 'Unpin'}
+                text={isPinned ? 'Unpin Note' : 'Pin Note'}
                 action={isPinned ? handleUnpinNote : handlePinNote}
             />
             <DropdownMenuSeparator />
