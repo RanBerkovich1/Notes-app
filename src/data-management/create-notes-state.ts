@@ -14,19 +14,19 @@ const createNotesState =
             return notes.find((note) => note.id === id);
         };
 
-        const addNote = async (newNote: Pick<Note, 'title' | 'description'>) => {
-            await storageService.addNote(newNote);
+        const addNote = async (newNote: Pick<Note, 'title' | 'description'>): Promise<Note> => {
+            const note =  await storageService.addNote(newNote);
             await syncNotes();
+            return note;
         };
 
         const updateNote = async (
             id: string,
             updateNote: Partial<Pick<Note, 'title' | 'description' | 'isPinned'>>
-        ) => {
+        ): Promise<Note> => {
             const editedNote = await storageService.updateNote(id, updateNote);
-            if (editedNote) {
-                await syncNotes();
-            }
+            await syncNotes();
+            return editedNote;
         };
 
         const deleteNote = async (id: string, permanently = false) => {
