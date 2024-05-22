@@ -21,11 +21,11 @@ export interface StorageService {
 
 export interface NotesStore {
     notes: Note[];
-    addNote: (newNote: Pick<Note, 'title' | 'description'>) => void;
+    addNote: (newNote: Pick<Note, 'title' | 'description'>) => Promise<Note>;
     updateNote: (
         id: string,
         updateNote: Partial<Pick<Note, 'title' | 'description' | 'isPinned'>>
-    ) => void;
+    ) => Promise<Note>;
     deleteNote: (id: string, permanently?: boolean) => void;
     syncNotes: () => void;
     getNoteById: (id: string) => Promise<Note | undefined>;

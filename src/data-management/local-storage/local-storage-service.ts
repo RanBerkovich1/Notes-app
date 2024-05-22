@@ -6,7 +6,19 @@ export class LocalStorageService implements StorageService {
     async getAllNotes(): Promise<Note[]> {
         return new Promise((resolve) => {
             const notesData = localStorage.getItem(STORAGE_NOTES_KEY);
-            resolve(notesData ? JSON.parse(notesData) : []);
+            if (notesData) {
+                const notes = JSON.parse(notesData);
+                for (const note of notes) {
+                    note.createdAt = new Date(note.createdAt);
+                    note.modifiedAt = new Date(note.modifiedAt);
+                    if (note.deletedAt) {
+                        note.deletedAt = new Date(note.deletedAt);
+                    }
+                }
+                resolve(notes);
+            } else {
+                resolve([]);
+            }
         });
     }
 
