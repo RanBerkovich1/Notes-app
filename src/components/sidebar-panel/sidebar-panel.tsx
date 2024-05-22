@@ -3,7 +3,6 @@ import styles from './sidebar-panel.module.scss';
 import { NavLink } from 'react-router-dom';
 import { Button } from '../button/button';
 import PlusSvg from '../../assets/plus.svg';
-import Notes from '../../assets/notes.svg';
 
 export interface HeaderProps {
     className?: string;
@@ -26,7 +25,7 @@ export const SidebarPanel = ({ className }: HeaderProps) => {
                     className={classNames(
                         ({ isActive }: { isActive: boolean }) =>
                             classNames({ [styles.active]: isActive }),
-                        styles['nav-item'],
+                        styles['nav-item']
                     )}
                 >
                     <div className={styles.notesSVG}>
@@ -50,8 +49,9 @@ export const SidebarPanel = ({ className }: HeaderProps) => {
                 <NavLink
                     to="/deleted"
                     className={classNames(
-                        ({ isActive }) => classNames({ [styles.active]: isActive }),
-                        styles['nav-item'],
+                        ({ isActive }: { isActive: boolean }) =>
+                            classNames({ [styles.active]: isActive }),
+                        styles['nav-item']
                     )}
                 >
                     <svg

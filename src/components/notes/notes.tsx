@@ -8,6 +8,8 @@ import { AddNoteCard } from '../add-note-card/add-note-card';
 import { groupNotesByTimePeriod } from './group-notes-by-period';
 import { FakeNote } from './fake-note/fake-note';
 import { ScrollArea } from '../scroll-area/scroll-area';
+import { Link } from 'react-router-dom';
+import { Note } from '../note/note';
 
 export interface NotesProps {
     className?: string;
@@ -29,7 +31,7 @@ export const Notes = ({ className }: NotesProps) => {
 
     const pinnedNotes = useMemo(
         () => relevantNotes.filter((note) => note.isPinned),
-        [relevantNotes],
+        [relevantNotes]
     );
 
     const noteGroups = useMemo(() => groupNotesByTimePeriod(relevantNotes), [relevantNotes]);
@@ -52,11 +54,19 @@ export const Notes = ({ className }: NotesProps) => {
                             ))}
                         </Section>
                     )}
+
                     {(todaysNotes || !searchString) && (
                         <Section title="Today">
-                            {!searchString && <AddNoteCard />}
+                            {!searchString && (
+                                <Link to="/add-note">
+                                    <AddNoteCard />
+                                </Link>
+                            )}
                             {todaysNotes?.notes.map((note) => (
-                                <FakeNote note={note} key={note.id} />
+                                <Link to={`/notes/${note.id}`}>
+                                    {' '}
+                                    <Note key={note.id} {...note} />
+                                </Link>
                             ))}
                         </Section>
                     )}
