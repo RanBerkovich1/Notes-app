@@ -3,6 +3,8 @@ import { DropdownMenu, DropdownMenuItem, DropdownMenuSeparator } from './dropdow
 import styles from './dropdown-menu.module.scss';
 import { useNotesStore } from '../../data-management/use-notes-store';
 import { Link } from 'react-router-dom';
+import { useToastStore } from '../../components/toast-container/toast-store';
+import { Button } from '../button/button';
 
 export const HomeDropdownMenu = ({
     id,
@@ -10,7 +12,8 @@ export const HomeDropdownMenu = ({
     title,
     description,
 }: Omit<Note, 'createdAt' | 'modifiedAt'>) => {
-    const { addNote, updateNote, deleteNote, syncNotes, pinNote, unPinNote } = useNotesStore();
+    const { addNote, deleteNote, pinNote, unPinNote, restoreNote } = useNotesStore();
+    const { openToast } = useToastStore();
 
     const handlePinNote = () => {
         pinNote(id);
@@ -26,6 +29,19 @@ export const HomeDropdownMenu = ({
 
     const handleDelete = () => {
         deleteNote(id);
+        openToast({
+            title: 'Note moved to Trash',
+            description: `It didn't delete permanently`,
+            action: (
+                <Button
+                    onClick={() => {
+                        restoreNote(id);
+                    }}
+                >
+                    Undo
+                </Button>
+            ),
+        });
     };
 
     return (
