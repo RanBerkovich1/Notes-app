@@ -24,7 +24,7 @@ export const Notes = ({ className }: NotesProps) => {
 
     const relevantNotes = useMemo(() => {
         return searchString
-            ? notes.filter((note) => !note.deletedAt && note.title.includes(searchString))
+            ? notes.filter((note) => !note.deletedAt && note.title.toLowerCase().includes(searchString.toLowerCase()))
             : notes.filter((note) => !note.deletedAt);
     }, [notes, searchString]);
 
