@@ -11,12 +11,12 @@ export interface HeaderProps {
 
 export const SidebarPanel = ({ className }: HeaderProps) => {
     return (
-        <div className={classNames(styles.root, className, styles['left-panel'])}>
+        <div className={classNames(styles.root, className)}>
             <div className={styles['top-area']}>
                 <a href="/" className={styles.logo}>
                     Notedux
                 </a>
-                <Button variant="primary" className={styles['nav-btn']}>
+                <Button variant="primary">
                     <PlusSvg />
                 </Button>
             </div>
@@ -24,7 +24,8 @@ export const SidebarPanel = ({ className }: HeaderProps) => {
                 <NavLink
                     to="/"
                     className={classNames(
-                        ({ isActive }) => classNames({ [styles.active]: isActive }),
+                        ({ isActive }: { isActive: boolean }) =>
+                            classNames({ [styles.active]: isActive }),
                         styles['nav-item'],
                     )}
                 >
