@@ -1,36 +1,27 @@
-@import '../../styles/common/variables.module.scss';
 .root {
-    height: $size32;
-    padding-right: $size12;
-    padding-left: $size12;
-    border-radius: $size4;
-    cursor: pointer;
-    font: $navigation;
-    display: flex;
-    align-items: center;
-}
-
-.primary {
-    color: $sand1;
-    background-color: #49cc62;
-    &:hover {
-        background-color: $grass5;
-    }
-    background-image: linear-gradient(#4acc63, #4acc63);
+    background-color: #965151;
+    background-image: linear-gradient(#804b4b, #804b4b);
     background-position: 0%;
     background-size: auto;
     background-repeat: repeat;
     background-attachment: scroll;
     background-origin: padding-box;
     background-clip: border-box;
-    background-image: linear-gradient(#5fcc74, #5fcc74);
+    background-image: linear-gradient(#9a5050, #9a5050);
     background-position: 0%;
     background-size: auto;
     background-repeat: repeat;
     background-attachment: scroll;
     background-origin: padding-box;
     background-clip: border-box;
-    background-image: linear-gradient(#277335, #277335);
+    background-image: linear-gradient(#804b4b, #804b4b);
+    background-position: 0%;
+    background-size: auto;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-origin: padding-box;
+    background-clip: border-box;
+    background-image: linear-gradient(#3f1f1f, #3f1f1f);
     background-position: 0%;
     background-size: auto;
     background-repeat: repeat;

@@ -9,6 +9,7 @@ import {
     Portal as DropdownMenuPortal,
 } from '@radix-ui/react-dropdown-menu';
 import { DotsVerticalIcon } from '@radix-ui/react-icons';
+import DropdownMenu_board_module from './dropdown-menu.board.module.scss';
 
 export default createBoard({
     name: 'DropdownMenu',
@@ -21,7 +22,9 @@ export default createBoard({
             <DropdownMenuPortal>
                 <DropdownMenuContent>
                     <DropdownMenuArrow />
-                    <DropdownMenuLabel>Menu</DropdownMenuLabel>
+                    <DropdownMenuLabel className={DropdownMenu_board_module.shimi}>
+                        Menu
+                    </DropdownMenuLabel>
 
                     <DropdownMenuItem>Simle item 1</DropdownMenuItem>
                     <DropdownMenuItem>Simle item 2</DropdownMenuItem>

@@ -1,17 +1,11 @@
 import classNames from 'classnames';
 import styles from './trash-page.module.scss';
-import { FakeNote } from '../notes/fake-note/fake-note';
 import { useNotesStore } from '../../data-management/use-notes-store';
 import { useEffect, useMemo, useState } from 'react';
 import { SearchInput } from '../search-input/search-input';
 import { Section } from '../section/section';
-import {
-    Root as ScrollAreaRoot,
-    Viewport as ScrollAreaViewport,
-    Scrollbar as ScrollAreaScrollbar,
-    Thumb as ScrollAreaThumb,
-} from '@radix-ui/react-scroll-area';
 import { ScrollArea } from '../scroll-area/scroll-area';
+import { Note } from '../note/note';
 
 export interface TrashPageProps {
     className?: string;
@@ -44,7 +38,7 @@ export const TrashPage = ({ className }: TrashPageProps) => {
                 <ScrollArea className={styles['scrollable-area']}>
                     <div className={styles['notes-list']}>
                         {relevantNotes.map((note) => (
-                            <FakeNote note={note} key={note.id} />
+                            <Note {...note} key={note.id} />
                         ))}
                     </div>
                 </ScrollArea>

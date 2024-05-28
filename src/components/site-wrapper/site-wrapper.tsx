@@ -16,7 +16,7 @@ export const SiteWrapper = ({ className }: SiteWrapperProps) => {
     return (
         <div className={classNames(styles.root, className)}>
             <SidebarPanel />
-            <div className={classNames(styles.content, style['w30'])}>
+            <div className={styles.content}>
                 <Outlet />
             </div>
         </div>
