@@ -1,10 +1,10 @@
 import classNames from 'classnames';
 import styles from './sidebar-panel.module.scss';
 import { NavLink } from 'react-router-dom';
-import { Button } from '../button/button';
-import PlusSvg from '../../assets/plus.svg?react';
 import TrashIcon from '../../assets/trash.svg?react';
 import NoteIcon from '../../assets/notes.svg?react';
+import { LinkButton } from '../button/link-button';
+import Plus from '../../assets/plus.svg';
 
 export interface HeaderProps {
     className?: string;
@@ -17,9 +17,9 @@ export const SidebarPanel = ({ className }: HeaderProps) => {
                 <a href="/" className={styles.logo}>
                     Notedux
                 </a>
-                <Button variant="primary">
-                    <PlusSvg />
-                </Button>
+                <LinkButton to="add-note">
+                    <Plus />
+                </LinkButton>
             </div>
             <div className={styles.menu}>
                 <NavLink
