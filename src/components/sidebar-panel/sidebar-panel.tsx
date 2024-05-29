@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import styles from './sidebar-panel.module.scss';
 import { NavLink } from 'react-router-dom';
-import TrashIcon from '../../assets/trash.svg?react';
+import { TrashIcon } from '@radix-ui/react-icons'
 import NoteIcon from '../../assets/notes.svg?react';
 import { LinkButton } from '../button/link-button';
+import { PlusIcon } from '@radix-ui/react-icons';
 import Plus from '../../assets/plus.svg';
 
 export interface HeaderProps {
@@ -18,7 +19,7 @@ export const SidebarPanel = ({ className }: HeaderProps) => {
                     Notedux
                 </a>
                 <LinkButton to="add-note">
-                    <Plus />
+                    <PlusIcon/>
                 </LinkButton>
             </div>
             <div className={styles.menu}>
