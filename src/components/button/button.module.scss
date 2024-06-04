@@ -12,9 +12,9 @@
 
 .primary {
     color: $sand1;
-    background-color: #49cc62;
+    background-color: $grass4;
     &:hover {
-        background-color: $grass5;
+        background-color: #18794e;
     }
     background-image: linear-gradient(#4acc63, #4acc63);
     background-position: 0%;
@@ -30,7 +30,7 @@
     background-attachment: scroll;
     background-origin: padding-box;
     background-clip: border-box;
-    background-image: linear-gradient(#277335, #277335);
+    background-image: none;
     background-position: 0%;
     background-size: auto;
     background-repeat: repeat;
